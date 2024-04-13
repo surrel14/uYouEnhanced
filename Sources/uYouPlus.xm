@@ -532,6 +532,17 @@ BOOL isAd(YTIElementRenderer *self) {
     %end
 %end
 
+// Fix uYou Repeat - @bhackel
+// When uYou repeat is enabled, and Suggested Video Popup is disabled,
+// the endscreen view with multiple suggestions is overlayed when it
+// should not be.
+%hook YTFullscreenEngagementOverlayController
+- (BOOL)isEnabled {
+    // repeatVideo is the key for uYou Repeat
+    return IS_ENABLED(@"repeatVideo") ? NO : %orig;
+}
+%end
+
 # pragma mark - Hide Notification Button && SponsorBlock Button && uYouPlus Button
 %hook YTRightNavigationButtons
 - (void)layoutSubviews {
@@ -550,20 +561,27 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide Fullscreen Actions buttons - @bhackel
+// Hide Fullscreen Actions buttons - @bhackel & @arichornlover
 %group hideFullscreenActions
-    %hook YTMainAppVideoPlayerOverlayViewController
-    - (BOOL)isFullscreenActionsEnabled {
-        // This didn't work on its own - weird
-        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+%hook YTMainAppVideoPlayerOverlayViewController
+- (BOOL)isFullscreenActionsEnabled {
+    return NO;
+}
+%end
+%hook YTFullscreenActionsView
+- (BOOL)enabled {
+    return NO;
+}
+- (void)layoutSubviews {
+    // Check if already removed from superview
+    if (self.superview) {
+        [self removeFromSuperview];
     }
-    %end
-    %hook YTFullscreenActionsView
-    - (BOOL)enabled {
-        // Attempt 2
-        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
-    }
-    %end
+    self.hidden = YES;
+    self.frame = CGRectZero;
+    %orig;
+}
+%end
 %end
 
 # pragma mark - uYouPlus
@@ -601,14 +619,14 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
+// Use stock iOS volume HUD
+// Use YTColdConfig's method, see https://x.com/PoomSmart/status/1756904290445332653
 %group gStockVolumeHUD
-%hook YTVolumeBarView
-- (void)volumeChanged:(id)arg1 {
-        %orig(nil);
+%hook YTColdConfig
+- (BOOL)iosUseSystemVolumeControlInFullscreen {
+    return IS_ENABLED(@"stockVolumeHUD_enabled") ? YES : %orig;
 }
 %end
-
 %hook UIApplication 
 - (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
         %orig(true, arg2);
@@ -638,6 +656,16 @@ BOOL isAd(YTIElementRenderer *self) {
     }
 }
 %end
+
+// Disable pull to enter vertical fullscreen gesture - @bhackel
+// This was introduced in version 19.XX
+%group gDisablePullToFull
+%hook YTColdConfig
+- (BOOL)enablePullToFull { return NO; }
+- (BOOL)enablePullToFullAlwaysExitFullscreenLandscape { return NO; }
+%end
+%end
+
 
 // Video Controls Overlay Options
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
@@ -735,16 +763,16 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-%group gHidePreviousAndNextButton
-%hook YTColdConfig
-- (BOOL)removeNextPaddleForAllVideos { 
-    return YES; 
-}
-- (BOOL)removePreviousPaddleForAllVideos { 
-    return YES; 
-}
-%end
-%end
+// %group gHidePreviousAndNextButton
+// %hook YTColdConfig
+// - (BOOL)removeNextPaddleForAllVideos { 
+//     return YES; 
+// }
+// - (BOOL)removePreviousPaddleForAllVideos { 
+//     return YES; 
+// }
+// %end
+// %end
 
 // Hide Dark Overlay Background
 %group gHideOverlayDarkBackground
@@ -779,15 +807,28 @@ BOOL isAd(YTIElementRenderer *self) {
 
 // Bring back the Red Progress Bar and Gray Buffer Progress
 %group gRedProgressBar
-%hook YTInlinePlayerBarContainerView
+%hook YTSegmentableInlinePlayerBarView
+- (void)setBufferedProgressBarColor:(id)arg1 {
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
+}
+%end
+
+%hook YTInlinePlayerBarContainerView // Red Progress Bar - Old (Compatible for v17.33.2-v19.10.7)
 - (id)quietProgressBarColor {
     return [UIColor redColor];
 }
 %end
 
-%hook YTSegmentableInlinePlayerBarView
-- (void)setBufferedProgressBarColor:(id)arg1 {
-     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
+%hook YTPlayerBarRectangleDecorationView // Red Progress Bar - New (Compatible for v19.10.7-latest)
+- (void)drawRectangleDecorationWithSideMasks:(CGRect)rect {
+    if (IS_ENABLED(@"redProgressBar_enabled")) {
+        YTIPlayerBarDecorationModel *model = [self valueForKey:@"_model"];
+        int overlayMode = model.playingState.overlayMode;
+        model.playingState.overlayMode = 1;
+        %orig;
+        model.playingState.overlayMode = overlayMode;
+    } else
+        %orig;
 }
 %end
 %end
@@ -853,11 +894,6 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-%hook YTShortsStartupCoordinator
-- (id)evaluateResumeToShorts { 
-    return IS_ENABLED(@"disableResumeToShorts_enabled") ? nil : %orig;
-}
-%end
 
 // Hide Shorts Cells - @PoomSmart & @iCrazeiOS
 %hook YTIElementRenderer
@@ -1276,9 +1312,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
         %init(gHideSubscriptionsNotificationBadge);
     }
-    if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
-        %init(gHidePreviousAndNextButton);
-    }
+    // if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
+    //     %init(gHidePreviousAndNextButton);
+    // }
     if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
         %init(gHideOverlayDarkBackground);
     }
@@ -1363,6 +1399,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"YTTapToSeek_enabled")) {
         %init(YTTTS_Tweak);
     }
+    if (IS_ENABLED(@"disablePullToFull_enabled")) {
+        %init(gDisablePullToFull);
+    }
 
     // YTNoModernUI - @arichorn
     BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
@@ -1392,15 +1431,25 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hidePlayNextInQueue_enabled"];
     }
     if (![allKeys containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
     }
     if (![allKeys containsObject:@"shortsProgressBar"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"shortsProgressBar"]; 
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"shortsProgressBar"]; 
     }
     if (![allKeys containsObject:@"RYD-ENABLED"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"RYD-ENABLED"]; 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"RYD-ENABLED"]; 
     }
     if (![allKeys containsObject:@"YouPiPEnabled"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
+    }
+    // Broken uYou 3.0.3 setting: No Suggested Videos at The Video End
+    // Set default to allow autoplay, user can disable later
+    if (![allKeys containsObject:@"noSuggestedVideoAtEnd"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"noSuggestedVideoAtEnd"]; 
+    }
+    // Broken uYou 3.0.2 setting: Playback Speed Controls
+    // Set default to disabled
+    if (![allKeys containsObject:@"showPlaybackRate"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"]; 
     }
 }
