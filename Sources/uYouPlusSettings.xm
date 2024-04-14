@@ -2,6 +2,7 @@
 #import "RootOptionsController.h"
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
+#import "AppIconOptionsController.h"
 
 #define VERSION_STRING [[NSString stringWithFormat:@"%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""]
 #define SHOW_RELAUNCH_YT_SNACKBAR [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"RESTART_YOUTUBE")]]
@@ -77,6 +78,20 @@ extern NSBundle *uYouPlusBundle();
     NSBundle *tweakBundle = uYouPlusBundle();
     Class YTSettingsSectionItemClass = %c(YTSettingsSectionItem);
     YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
+
+    # pragma mark - App Icon Customization
+    YTSettingsSectionItem *appIcon = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"Change App Icon")
+        titleDescription:nil
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            AppIconOptionsController *appIconController = [[AppIconOptionsController alloc] init];
+            [settingsViewController.navigationController pushViewController:appIconController animated:YES];
+            return YES;
+        }
+    ];
+    [sectionItems addObject:appIcon];
 
     # pragma mark - About
     // SECTION_HEADER(LOC(@"ABOUT"));
@@ -229,7 +244,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"PINCH_TO_ZOOM"), LOC(@"PINCH_TO_ZOOM_DESC"), @"pinchToZoom_enabled");
     SWITCH_ITEM(LOC(@"YT_MINIPLAYER"), LOC(@"YT_MINIPLAYER_DESC"), @"ytMiniPlayer_enabled");
     SWITCH_ITEM2(LOC(@"STOCK_VOLUME_HUD"), LOC(@"STOCK_VOLUME_HUD_DESC"), @"stockVolumeHUD_enabled");
-    SWITCH_ITEM2(LOC(@"Disable portrait fullscreen gesture"), LOC(@"Disable the drag gesture to enter vertical fullscreen"), @"disablePullToFull_enabled");
+    SWITCH_ITEM2(LOC(@"Disable pull-to-fullscreen gesture"), LOC(@"Disable the drag gesture to enter vertical fullscreen. Only applies to landscape videos."), @"disablePullToFull_enabled");
 
     # pragma mark - Video controls overlay options
     SECTION_HEADER(LOC(@"VIDEO_PLAYER_OPTIONS"));

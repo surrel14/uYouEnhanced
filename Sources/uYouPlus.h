@@ -30,6 +30,7 @@
 #import <YouTubeHeader/YTInnerTubeCollectionViewController.h>
 #import <YouTubeHeader/YTPivotBarItemView.h>
 #import <YouTubeHeader/YTCollectionViewCell.h>
+#import <YouTubeHeader/YTWatchViewController.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
@@ -65,6 +66,15 @@
 // Enable Premium logo - @bhackel
 @interface YTITopbarLogoRenderer : NSObject
 @property(readonly, nonatomic) YTIIcon *iconImage;
+@end
+
+// Disable Pull to Full for landscape videos - @bhackel
+@interface YTWatchPullToFullController : NSObject
+@property(nonatomic, strong) YTWatchViewController *playerViewSource;
+@end
+@interface YTWatchViewController (uYouEnhanced)
+@property(nonatomic, strong) YTWatchPullToFullController *pullToFullController;
+- (NSUInteger)allowedFullScreenOrientations;
 @end
 
 // uYouPlus
