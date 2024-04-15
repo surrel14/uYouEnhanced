@@ -44,7 +44,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.appIcons.count;
+    return self.appIcons.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,20 +53,27 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    NSString *iconPath = self.appIcons[indexPath.row];
-    cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
-
-    UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
-    cell.imageView.image = [self resizedImageWithImage:iconImage];
-    
-    if (indexPath.row == self.selectedIconIndex) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    if (indexPath.row == self.defaultIconIndex) {
+    if (indexPath.row == 0) {
         cell.textLabel.text = @"Default";
+        if (indexPath.row == self.defaultIconIndex) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    } else {
+        NSString *iconPath = self.appIcons[indexPath.row - 1];
+        cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
+    
+        UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
+        cell.imageView.image = [self resizedImageWithImage:iconImage];
+        cell.imageView.layer.cornerRadius = 10.0;
+        cell.imageView.clipsToBounds = YES;
+        
+        if (indexPath.row - 1 == self.selectedIconIndex) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
     return cell;
@@ -75,21 +82,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UITableViewCell *previousSelectedCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIconIndex inSection:0]];
-    previousSelectedCell.accessoryType = UITableViewCellAccessoryNone;
-    
-    self.selectedIconIndex = indexPath.row;
-    
-    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    NSString *selectedIconPath = self.appIcons[self.selectedIconIndex];
-    UIImage *selectedIconImage = [UIImage imageWithContentsOfFile:selectedIconPath];
-    self.iconPreview.image = [self resizedImageWithImage:selectedIconImage];
+    if (indexPath.row == 0) {
+        UITableViewCell *previousSelectedCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIconIndex + 1 inSection:0]];
+        previousSelectedCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        self.selectedIconIndex = -1;
+        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        self.iconPreview.image = nil;
+    } else {
+        UITableViewCell *previousSelectedCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.defaultIconIndex inSection:0]];
+        previousSelectedCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        self.defaultIconIndex = 0;
+        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        NSString *selectedIconPath = self.appIcons[indexPath.row - 1];
+        UIImage *selectedIconImage = [UIImage imageWithContentsOfFile:selectedIconPath];
+        self.iconPreview.image = [self resizedImageWithImage:selectedIconImage];
+    }
 }
 
 - (void)saveIcon {
-    NSString *selectedIconPath = self.appIcons[self.selectedIconIndex];
+    NSString *selectedIconPath;
+    if (self.selectedIconIndex == -1) {
+        selectedIconPath = nil;
+    } else {
+        selectedIconPath = self.appIcons[self.selectedIconIndex];
+    }
+    
     [[UIApplication sharedApplication] setAlternateIconName:selectedIconPath completionHandler:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
