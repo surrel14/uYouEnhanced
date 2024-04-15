@@ -22,12 +22,14 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
-    
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
-    self.navigationItem.leftBarButtonItem = closeButton;
-    
+
+    UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt"];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
+    UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
-    self.navigationItem.rightBarButtonItem = saveButton;
+    self.navigationItem.rightBarButtonItems = @[resetButton, saveButton];
     
     self.iconPreview = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, self.view.bounds.size.height - 80, 60, 60)];
     self.iconPreview.layer.cornerRadius = 10.0;
@@ -47,6 +49,10 @@
     return self.appIcons.count + 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
@@ -54,7 +60,7 @@
     }
     
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"Default";
+        cell.textLabel.text = @"Reset";
         if (indexPath.row == self.defaultIconIndex) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         } else {
@@ -83,26 +89,29 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        UITableViewCell *previousSelectedCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIconIndex + 1 inSection:0]];
-        previousSelectedCell.accessoryType = UITableViewCellAccessoryNone;
-        
         self.selectedIconIndex = -1;
-        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
+        [self.tableView reloadData];
         self.iconPreview.image = nil;
     } else {
-        UITableViewCell *previousSelectedCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.defaultIconIndex inSection:0]];
-        previousSelectedCell.accessoryType = UITableViewCellAccessoryNone;
-        
         self.defaultIconIndex = 0;
-        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
         NSString *selectedIconPath = self.appIcons[indexPath.row - 1];
         UIImage *selectedIconImage = [UIImage imageWithContentsOfFile:selectedIconPath];
         self.iconPreview.image = [self resizedImageWithImage:selectedIconImage];
     }
+}
+
+- (void)resetIcon {
+    [[UIApplication sharedApplication] setAlternateIconName:nil completionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error resetting icon: %@", error.localizedDescription);
+            [self showAlertWithTitle:@"Error" message:@"Failed to reset icon"];
+        } else {
+            NSLog(@"Icon reset successfully");
+            [self showAlertWithTitle:@"Success" message:@"Icon reset successfully"];
+            [self.tableView reloadData];
+            self.iconPreview.image = nil;
+        }
+    }];
 }
 
 - (void)saveIcon {
@@ -143,8 +152,8 @@
     });
 }
 
-- (void)close {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
