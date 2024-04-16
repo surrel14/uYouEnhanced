@@ -652,7 +652,7 @@ BOOL isAd(YTIElementRenderer *self) {
 - (void)layoutSubviews {
     %orig;
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        self.scrimOverlay.backgroundColor = [UIColor clearColor];
+        self.frame = CGRectZero;
     }
 }
 %end
