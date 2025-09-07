@@ -14,14 +14,14 @@
 
     self.title = @"Change App Icon";
     self.selectedIconIndex = -1;
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.backButton setImage:[UIImage customBackButtonImage] forState:UIControlStateNormal];
+    [self.backButton setImage:[UIImage systemImageNamed:@"chevron.backward"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithCustomView:self.backButton];
     self.navigationItem.leftBarButtonItem = customBackButton;
@@ -29,7 +29,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:path];
     self.appIcons = [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
-    
+
     if (![UIApplication sharedApplication].supportsAlternateIcons) {
         NSLog(@"Alternate icons are not supported on this device.");
     }
@@ -40,13 +40,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
+    return 80.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     NSString *iconPath = self.appIcons[indexPath.row];
@@ -54,8 +55,9 @@
     
     UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
     cell.imageView.image = iconImage;
-    cell.imageView.layer.cornerRadius = 10.0;
+    cell.imageView.layer.cornerRadius = 16.0;
     cell.imageView.clipsToBounds = YES;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     cell.accessoryType = (indexPath.row == self.selectedIconIndex) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
@@ -66,6 +68,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     self.selectedIconIndex = indexPath.row;
+    [self saveIcon];
     [self.tableView reloadData];
 }
 

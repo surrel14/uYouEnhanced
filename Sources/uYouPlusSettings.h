@@ -4,7 +4,14 @@
 #import <YouTubeHeader/YTSettingsSectionItemManager.h>
 #import <YouTubeHeader/YTUIUtils.h>
 #import <YouTubeHeader/YTSettingsPickerViewController.h>
+#import <YouTubeHeader/YTToastResponderEvent.h>
 #import "uYouPlus.h"
+
+// custom
+@interface YTSettingsCell ()
+- (void)setIndicatorIcon:(int)icon;
+- (void)setTitleDescription:(id)titleDescription;
+@end
 
 // For displaying snackbars
 @interface YTHUDMessage : NSObject

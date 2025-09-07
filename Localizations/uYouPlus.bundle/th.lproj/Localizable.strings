@@ -1,302 +1,306 @@
-// About
+// เกี่ยวกับ
 "ABOUT" = "เกี่ยวกับ";
 
-"VERSION" = "เวอร์ชัน uYouPlus คือ: %@";
-"VERSION_CHECK" = "ดูเวอร์ชันล่าสุด";
+"VERSION" = "เวอร์ชัน";
+"VERSION_CHECK" = "แตะเพื่อตรวจสอบการอัปเดต!";
 
 "REPORT_AN_ISSUE" = "รายงานปัญหา";
 "ADD_TITLE" = "เพิ่มชื่อเรื่องของคุณที่นี่...";
 
 "QUIT_YOUTUBE" = "ออกจาก YouTube";
+"RESTART_YOUTUBE" = "รีสตาร์ท YouTube เพื่อให้การเปลี่ยนแปลงมีผล";
 
-"RESTART_YOUTUBE" = "รีสตาร์ท YouTube เพื่อใช้การเปลี่ยนแปลง";
+// ลักษณะของแอป
+"APP_THEME" = "🎨 ลักษณะของแอป";
+"THEME_OPTIONS" = "ตัวเลือกธีม";
 
-//รูปลักษณ์ของแอป
-"APP_THEME" = "ลักษณะที่ปรากฏของแอป";
-"THEME_OPTIONS" = "ตัวเลือกลักษณะธีม";
-"DARK_THEME" = "Dark theme";
+"DARK_THEME" = "ธีมมืด";
 
 "DEFAULT_THEME" = "ค่าเริ่มต้น";
-"DEFAULT_THEME_DESC" = "YouTube มีค่าเริ่มต้นเป็นโหมดมืด ต้องรีสตาร์ทแอป";
+"DEFAULT_THEME_DESC" = "";
 
-"OLD_DARK_THEME" = "โหมดมืดแบบดั้งเดิม";
-"OLD_DARK_THEME_DESC" = "โหมดมืดของ YouTube (รูปแบบสีเทา) ต้องรีสตาร์ทแอป";
+"OLD_DARK_THEME" = "เทาอ่อน";
+"OLD_DARK_THEME_DESC" = "ธีมมืดเก่าของ YouTube";
 
-"OLED_DARK_THEME" = "โหมดมืด OLED (ทดลอง)";
-"OLED_DARK_THEME_2" = "โหมดมืด OLED";
-"OLED_DARK_THEME_DESC" = "ทำงานไม่ถูกต้องในบางกรณี การเปลี่ยนตัวเลือกนี้จำเป็นต้องรีสตาร์ทแอปพลิเคชั่น";
+"OLED_DARK_THEME" = "OLED (ทดลอง)";
+"OLED_DARK_THEME_2" = "OLED";
+"OLED_DARK_THEME_DESC" = "ธีมมืดสีดำสนิท";
 
 "OLED_KEYBOARD" = "แป้นพิมพ์ OLED (ทดลอง)";
-"OLED_KEYBOARD_DESC" = "อาจทำงานไม่ถูกต้องในบางกรณี จำเป็นต้องรีสตาร์ทแอปพลิเคชัน";
+"OLED_KEYBOARD_DESC" = "";
 
-// Video player options
-"VIDEO_PLAYER_OPTIONS" = "⏯️ ตัวเลือกผู้เล่น";
+// ตัวเลือกของเครื่องเล่นวิดีโอ
+"VIDEO_PLAYER_OPTIONS" = "⏯️ ตัวเลือกของเครื่องเล่นวิดีโอ";
 
-"SLIDE_TO_SEEK" = "เปิดใช้งานสไลด์เพื่อค้นหา";
-"SLIDE_TO_SEEK_DESC" = "นำสไลด์กลับมาเพื่อค้นหาท่าทาง";
+"SLIDE_TO_SEEK" = "เปิดใช้งาน Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "นำท่าทาง Slide to seek กลับมา";
 
-"DISABLE_DOUBLE_TAP_TO_SEEK" = "ปิดใช้งานการแตะสองครั้งเพื่อค้นหา";
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "ปิดใช้งาน double tap to seek";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
 
-"SNAP_TO_CHAPTER" = "ปิดใช้งานการข้ามบท";
-"SNAP_TO_CHAPTER_DESC" = "ปิดใช้งานการข้ามไปยังบทอัตโนมัติเมื่อวิดีโอส่งต่ออย่างรวดเร็ว ต้องรีสตาร์ทแอปพลิเคชัน";
+"SNAP_TO_CHAPTER" = "ปิดใช้งาน snap to chapter";
+"SNAP_TO_CHAPTER_DESC" = "ปิดการจับยึดอัตโนมัติที่บทเมื่อเลื่อนผ่านวิดีโอ";
 
-"PINCH_TO_ZOOM" = "ปิดใช้งานการซูมด้วยท่าทาง";
-"PINCH_TO_ZOOM_DESC" = "ต้องรีสตาร์ทแอปพลิเคชัน";
+"PINCH_TO_ZOOM" = "ปิดใช้งาน pinch to zoom";
+"PINCH_TO_ZOOM_DESC" = "";
 
-"YT_MINIPLAYER" = "เปิดใช้งานเครื่องเล่นขนาดเล็กสำหรับวิดีโอ YouTube ทั้งหมด";
-"YT_MINIPLAYER_DESC" = "ตัวอย่างเช่น ภาพยนตร์สำหรับเด็ก";
+"YT_MINIPLAYER" = "เปิดใช้งาน miniplayer สำหรับทุกวิดีโอ";
+"YT_MINIPLAYER_DESC" = "ไม่สามารถเปิดใช้งาน miniplayer สำหรับบางวิดีโอ (เช่น วิดีโอสำหรับเด็ก) ตัวเลือกนี้จะข้ามข้อจำกัดนี้";
 
-"HIDE_REMIX_BUTTON" = "Hides Remix button";
+"HIDE_REMIX_BUTTON" = "ซ่อนปุ่ม Remix";
 "HIDE_REMIX_BUTTON_DESC" = "";
 
-"HIDE_CLIP_BUTTON" = "Hide Clip button";
+"HIDE_CLIP_BUTTON" = "ซ่อนปุ่ม Clip";
 "HIDE_CLIP_BUTTON_DESC" = "";
 
-"HIDE_DOWNLOAD_BUTTON" = "Hide Download button";
+"HIDE_DOWNLOAD_BUTTON" = "ซ่อนปุ่มดาวน์โหลด";
 "HIDE_DOWNLOAD_BUTTON_DESC" = "";
 
-"STOCK_VOLUME_HUD" = "ใช้ HUD โวลุ่ม iOS ในตัว";
+"STOCK_VOLUME_HUD" = "ใช้ HUD ระดับเสียง iOS ต้นฉบับ";
 "STOCK_VOLUME_HUD_DESC" = "";
 
-// Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 ตัวเลือกการควบคุมการซ้อนทับวิดีโอ";
+"REPLACE_YT_DOWNLOAD_WITH_UYOU" = "แทนที่การดาวน์โหลดของ YouTube ด้วย uYou";
+"REPLACE_YT_DOWNLOAD_WITH_UYOU_DESC" = "";
 
-"HIDE_AUTOPLAY_SWITCH" = "ซ่อนสวิตช์เล่นอัตโนมัติ";
-"HIDE_AUTOPLAY_SWITCH_DESC" = "ซ่อนสวิตช์เล่นอัตโนมัติในตัวควบคุมภาพยนตร์";
+// ตัวเลือกของวิดีโอควบคุมบนหน้าจอ
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 ตัวเลือกการควบคุมวิดีโอบนหน้าจอ";
 
-"HIDE_YTMUSIC_BUTTON" = "ซ่อนปุ่มเพลง YouTube";
-"HIDE_YTMUSIC_BUTTON_DESC" = "ซ่อนปุ่ม Youtube Music ที่ปรากฏพร้อมกับพรีเมียม";
+"HIDE_AUTOPLAY_SWITCH" = "ซ่อนสวิตช์ autoplay";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "";
 
-"HIDE_SUBTITLES_BUTTON" = "ปุ่มซ่อนคำบรรยาย";
-"HIDE_SUBTITLES_BUTTON_DESC" = "ซ่อนปุ่มคำบรรยายในเลเยอร์ควบคุมวิดีโอ";
+"HIDE_SUBTITLES_BUTTON" = "ซ่อนปุ่มคำบรรยาย";
+"HIDE_SUBTITLES_BUTTON_DESC" = "";
 
 "HIDE_HUD_MESSAGES" = "ซ่อนข้อความ HUD";
-"HIDE_HUD_MESSAGES_DESC" = "ตัวอย่างเช่น: คำบรรยาย CC, เปิด/ปิด, เปิดการวนซ้ำวิดีโอ ฯลฯ...";
+"HIDE_HUD_MESSAGES_DESC" = "ซ่อนข้อความ snackbars ที่แสดงในบางการกระทำ (เช่น CC เปิด/ปิด)";
 
-"HIDE_PAID_PROMOTION_CARDS" = "ซ่อนแบนเนอร์ที่ต้องชำระเงิน (YTNoPaidPromo)";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "ซ่อนแบนเนอร์ "รวมการโปรโมตแบบชำระเงิน" ในบางวิดีโอ ";
+"HIDE_PAID_PROMOTION_CARDS" = "ซ่อนแบนเนอร์โปรโมชันที่จ่ายเงิน";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "";
 
-"HIDE_CHANNEL_WATERMARK" = "ซ่อนลายน้ำของช่อง";
-"HIDE_CHANNEL_WATERMARK_DESC" = "ซ่อนลายน้ำช่องของการควบคุมโฮเวอร์ ต้องรีสตาร์ทแอปพลิเคชัน";
+"HIDE_CHANNEL_WATERMARK" = "ซ่อนวอเตอร์มาร์คช่อง";
+"HIDE_CHANNEL_WATERMARK_DESC" = "";
 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "ซ่อนปุ่มก่อนหน้าและปุ่มถัดไป";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "ซ่อนปุ่มก่อนหน้าและถัดไปในเลเยอร์ควบคุมภาพยนตร์";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "ซ่อนปุ่มก่อนหน้าและถัดไป";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "ซ่อนในทุกวิดีโอรวมถึงเพลย์ลิสต์";
 
-"REPLACE_PREVIOUS_NEXT_BUTTON" = "แทนที่ปุ่มก่อนหน้า/ถัดไป";
-"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "แทนที่ปุ่มก่อนหน้า/ถัดไปบนอินเทอร์เฟซการควบคุมเครื่องเล่นวิดีโอด้วยปุ่มกรอไปข้างหน้า/ย้อนกลับ รีสตาร์ทแอปพลิเคชัน";
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "ใช้ปุ่มข้ามไปข้างหน้าและย้อนกลับ";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "แทนที่ปุ่มก่อนหน้าและถัดไปด้วยปุ่มข้ามไปข้างหน้าและย้อนกลับ";
 
-"RED_PROGRESS_BAR" = "แถบความคืบหน้าสีแดง";
-"RED_PROGRESS_BAR_DESC" = "กู้คืนแถบความคืบหน้าสีแดง ต้องรีสตาร์ทแอปพลิเคชัน";
+"RED_PROGRESS_BAR" = "แถบความคืบหน้าแดง";
+"RED_PROGRESS_BAR_DESC" = "";
 
-"HIDE_HOVER_CARD" = "ซ่อนการ์ดโฮเวอร์ตอนท้าย (YTNoHoverCards)";
-"HIDE_HOVER_CARD_DESC" = "ซ่อนตอนท้ายของผู้สร้างที่ตอนท้ายของวิดีโอ";
+"HIDE_HOVER_CARD" = "YTNoHoverCards";
+"HIDE_HOVER_CARD_DESC" = "ซ่อนหน้าจอสุดท้ายของวิดีโอ";
 
-"HIDE_RIGHT_PANEL" = "ซ่อนแผงด้านขวาแบบเต็มหน้าจอ";
-"HIDE_RIGHT_PANEL_DESC" = "แอปพลิเคชันจำเป็นต้องรีสตาร์ท";
+"HIDE_RIGHT_PANEL" = "ซ่อนแผงการมีส่วนร่วมในโหมดเต็มหน้าจอ";
+"HIDE_RIGHT_PANEL_DESC" = "ซ่อนแผงด้านขวา (เช่น ความคิดเห็น, แชทสด, ฯลฯ) ในโหมดแนวนอน";
 
-// Shorts ควบคุมตัวเลือกการซ้อนทับ
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 ตัวเลือกการควบคุมการวางเมาส์เหนือกางเกงขาสั้น";
+// ตัวเลือกควบคุมของ Shorts
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 ตัวเลือกควบคุมของ Shorts";
 
-"HIDE_SUPER_THANKS" = "ซ่อนแบนเนอร์ 'ขอบคุณมากสำหรับการซื้อ'";
-"HIDE_SUPER_THANKS_DESC" = "ซ่อนแบนเนอร์ 'ขอบคุณสำหรับการซื้อ' ใน Shorts";
+"HIDE_SUPER_THANKS" = "ซ่อนแบนเนอร์ 'ซื้อ Super Thanks'";
+"HIDE_SUPER_THANKS_DESC" = "";
 
-"HIDE_SUBCRIPTIONS" = "ซ่อนปุ่มสมัครสมาชิก";
-"HIDE_SUBCRIPTIONS_DESC" = "ซ่อนปุ่มสมัครสมาชิกที่ปรากฏขึ้นเมื่อหยุดชั่วคราว";
+"HIDE_SUBCRIPTIONS" = "ซ่อนปุ่มการสมัครสมาชิก";
+"HIDE_SUBCRIPTIONS_DESC" = "";
 
-"DISABLE_RESUME_TO_SHORTS" = "ปิดใช้งานการเล่นสั้นต่อ";
-"DISABLE_RESUME_TO_SHORTS_DESC" = "หากคุณปิดโปรแกรมขณะรับชมวิดีโอสั้น วิดีโอสั้นจะไม่เล่นโดยอัตโนมัติอีกต่อไปในครั้งถัดไปที่คุณเปิดโปรแกรม";
+"DISABLE_RESUME_TO_SHORTS" = "ปิดใช้งานการกลับไปยัง Shorts";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "หากคุณปิดแอป YouTube ขณะดู Shorts ตัวเลือกนี้จะป้องกันไม่ให้แอปเริ่มเล่นต่อในครั้งถัดไป";
 
-//เบ็ดเตล็ด
-"เบ็ดเตล็ด" = "🔎เบ็ดเตล็ด";
+// อื่นๆ
+"MISCELLANEOUS" = "🔎 อื่นๆ";
 
-"HIDE_UYOU" = "ซ่อนแท็บคุณ";
+"HIDE_UYOU" = "ซ่อนแท็บ uYou";
 "HIDE_ISPONSORBLOCK" = "ซ่อนปุ่ม iSponsorBlock";
 
-"CAST_CONFIRM" = "การยืนยันก่อนส่งมอบ (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "แสดงข้อความยืนยันก่อนให้บริการเพื่อป้องกันไม่ให้สมาชิกในครอบครัวดำเนินการดังกล่าว";
-"การคัดเลือกนักแสดง" = "การคัดเลือกนักแสดง";
-"MSG_ARE_YOU_SURE" = "เริ่มการจัดส่ง";
-"MSG_YES" = "ตกลง";
-"MSG_CANCEL" = "ยกเลิก";
+"CAST_CONFIRM" = "YTCastConfirm";
+"CAST_CONFIRM_DESC" = "แสดงการแจ้งเตือนยืนยันก่อนการแคสต์";
+"CASTING" = "กำลังแคสต์";
+"MSG_ARE_YOU_SURE" = "คุณแน่ใจหรือไม่ว่าต้องการเริ่มการแคสต์?";
+"MSG_YES" = "ใช่"; "MSG_CANCEL" = "ยกเลิก";
 
 "DISABLE_HINTS" = "ปิดใช้งานคำแนะนำ";
-"DISABLE_HINTS_DESC" = "ปิดใช้งานคำแนะนำคุณลักษณะที่แสดงเมื่อติดตั้งแอปพลิเคชันครั้งแรก";
+"DISABLE_HINTS_DESC" = "ปิดคำแนะนำฟีเจอร์ YouTube ที่แสดงเมื่อแอปเพิ่งติดตั้ง";
 
-"ENABLE_YT_STARTUP_ANIMATION" = "เปิดใช้งานภาพเคลื่อนไหวต้อนรับของ YouTube";
+"ENABLE_YT_STARTUP_ANIMATION" = "เปิดใช้งานแอนิเมชันเริ่มต้นของ YouTube";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
-"HIDE_CHIP_BAR" = "ซ่อนฟิลด์ด้านบน";
-"HIDE_CHIP_BAR_DESC" = "ซ่อนคอลัมน์ด้านบนของหน้าจอหลัก (หัวข้อ เพลง เกม...) และการอัปเดตสมาชิก (วิดีโอทั้งหมด ดูต่อ...) จำเป็นต้องรีสตาร์ทแอปพลิเคชัน";
+"HIDE_CHIP_BAR" = "ซ่อนแถบด้านบน";
+"HIDE_CHIP_BAR_DESC" = "ซ่อนแถบด้านบนในหน้าหลักและฟีดการสมัครสมาชิก (เช่น ทุกวิดีโอ, ต่อเนื่องการรับชม, ฯลฯ)";
 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "ซ่อน \"เล่นถัดไปในคิว\"";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "ซ่อน 'เล่นถัดไปในคิว'";
 "HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
 
-"IPHONE_LAYOUT" = "เค้าโครง iPhone";
-"IPHONE_LAYOUT_DESC" = "สลับไปใช้รูปแบบ iPhone ต้องรีสตาร์ทแอป";
+"IPHONE_LAYOUT" = "บังคับรูปแบบ iPhone";
+"IPHONE_LAYOUT_DESC" = "";
 
-"NEW_MINIPLAYER_STYLE" = "เครื่องเล่นขนาดเล็ก (BigYTMiniPlayer)";
-"NEW_MINIPLAYER_STYLE_DESC" = "ต้องรีสตาร์ทแอปพลิเคชัน";
+"NEW_MINIPLAYER_STYLE" = "BigYTMiniPlayer";
+"NEW_MINIPLAYER_STYLE_DESC" = "สไตล์แถบ mini player ใหม่";
 
-"YT_RE_EXPLORE" = "แทนที่การแบ่งหน้า Shorts ด้วยการแบ่งหน้าแบบสำรวจ (YTReExplore)";
-"YT_RE_EXPLORE_DESC" = "แอปพลิเคชันจำเป็นต้องรีสตาร์ท";
+"YT_RE_EXPLORE" = "YTReExplore";
+"YT_RE_EXPLORE_DESC" = "แทนที่แท็บ Shorts ด้วยแท็บ Explore";
 
 "ENABLE_FLEX" = "เปิดใช้งาน FLEX";
-"ENABLE_FLEX_DESC" = "เปิดใช้งาน FLEX สำหรับการดีบัก (ไม่แนะนำ) อย่าใช้หากคุณไม่รู้ว่ากำลังทำอะไรอยู่";
+"ENABLE_FLEX_DESC" = "เปิดใช้งาน FLEX สำหรับการดีบัก";
 
-"FIX_GOOGLE_SIGNIN" = "แก้ไขปัญหาการเข้าสู่ระบบบัญชี Google (ใช้ได้สำหรับผู้ใช้ TrollStore เท่านั้น)";
-"FIX_GOOGLE_SIGNIN_DESC" = "ใช้ได้เฉพาะเมื่อใช้ TrollStore เพื่อติดตั้งแอปพลิเคชันนี้: หลังจากเปิดใช้งานการตั้งค่านี้ คุณสามารถเข้าสู่ระบบบัญชี Google ของคุณได้ตามปกติ และคุณต้องรีสตาร์ทแอปพลิเคชัน";
+"FIX_GOOGLE_SIGNIN" = "แก้ไขการเข้าสู่ระบบ Google (เฉพาะผู้ใช้ TrollStore)";
+"FIX_GOOGLE_SIGNIN_DESC" = "เปิดใช้งานตัวเลือกนี้เมื่อไม่สามารถเข้าสู่ระบบด้วยบัญชี Google และแอปติดตั้งผ่าน TrollStore หากสามารถเข้าสู่ระบบได้ปกติให้ปิดใช้งาน ฟังก์ชันนี้ต้องรีสตาร์ทแอป.";
 
 // uYouEnhanced Localization ➕
-"SUPPORT_THE_DEVELOPERS" = "Support the Developers";
-"COPY_SETTINGS" = "Copy Settings";
-"COPY_SETTINGS_DESC" = "Copy all current settings to the clipboard";
-"PASTE_SETTINGS" = "Paste Settings";
-"PASTE_SETTINGS_DESC" = "Paste settings from clipboard and apply";
-"EXPORT_SETTINGS" = "Export Settings";
-"EXPORT_SETTINGS_DESC" = "Exports all current settings into a .txt file";
-"IMPORT_SETTINGS" = "Import Settings";
-"IMPORT_SETTINGS_DESC" = "Press to import settings (.txt)";
-"REPLACE_COPY_AND_PASTE_BUTTONS" = "Replace 'Copy Settings' & 'Paste Settings' Buttons";
-"REPLACE_COPY_AND_PASTE_BUTTONS_DESC" = "Replaces the Buttons to 'Export Settings' and 'Import Settings'";
+"SUPPORT_THE_DEVELOPERS" = "สนับสนุนผู้พัฒนา";
+"COPY_SETTINGS" = "คัดลอกการตั้งค่า";
+"COPY_SETTINGS_DESC" = "คัดลอกการตั้งค่าทั้งหมดในปัจจุบันไปยังคลิปบอร์ด";
+"PASTE_SETTINGS" = "วางการตั้งค่า";
+"PASTE_SETTINGS_DESC" = "วางการตั้งค่าจากคลิปบอร์ดและใช้งาน";
+"EXPORT_SETTINGS" = "ส่งออกการตั้งค่า";
+"EXPORT_SETTINGS_DESC" = "ส่งออกการตั้งค่าทั้งหมดไปยังไฟล์ .txt";
+"IMPORT_SETTINGS" = "นำเข้าการตั้งค่า";
+"IMPORT_SETTINGS_DESC" = "กดเพื่อนำเข้าการตั้งค่า (.txt)";
+"REPLACE_COPY_AND_PASTE_BUTTONS" = "แทนที่ปุ่ม 'คัดลอกการตั้งค่า' และ 'วางการตั้งค่า'";
+"REPLACE_COPY_AND_PASTE_BUTTONS_DESC" = "แทนที่ปุ่มด้วย 'ส่งออกการตั้งค่า' และ 'นำเข้าการตั้งค่า'";
 
-"UYOUENHANCED_ESSENTIAL_MENU" = "uYouEnhanced Essential Menu";
-"CHANGE_APP_ICON" = "Change App Icon";
-"CLEAR_NOTIFICATIONS" = "Clear Notifications";
-"CLEAR_NOTIFICATIONS_DESC" = "Force clear all app notifications (Recommended when Sideloaded)";
+"UYOUENHANCED_ESSENTIAL_MENU" = "เมนูสำคัญของ uYouEnhanced";
+"CHANGE_APP_ICON" = "เปลี่ยนไอคอนแอป";
+"CLEAR_NOTIFICATIONS" = "ล้างการแจ้งเตือน";
+"CLEAR_NOTIFICATIONS_DESC" = "บังคับลบการแจ้งเตือนทั้งหมด (แนะนำเมื่อแอปถูกติดตั้งจากแหล่งที่ไม่ใช่ Play Store)";
 
-"CUSTOM_DARK_THEME" = "Custom Dark Theme";
+"CUSTOM_DARK_THEME" = "ธีมมืดที่กำหนดเอง";
 
-"ENABLE_PORTRAIT_FULLSCREEN" = "Enable Portrait Fullscreen";
-"ENABLE_PORTRAIT_FULLSCREEN_DESC" = "Enables Portrait Fullscreen on the YouTube App. App restart is required.";
-"ENABLE_TAP_TO_SEEK" = "Enable Tap To Seek";
-"ENABLE_TAP_TO_SEEK_DESC" = "Jump to anywhere in a video by single-tapping the seek bar";
-"DISABLE_PULL_TO_FULLSCREEN_GESTURE" = "Disable pull-to-fullscreen gesture";
-"DISABLE_PULL_TO_FULLSCREEN_GESTURE_DESC" = "Disable the drag gesture to enter vertical fullscreen. Only applies to landscape videos.";
-"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER" = "Disable Double tap to skip chapter";
-"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER_DESC" = "Disable the 2-finger double tap gesture that skips forward/backward by a chapter.";
-"ALWAYS_USE_REMAINING_TIME" = "Always use remaining time";
-"ALWAYS_USE_REMAINING_TIME_DESC" = "Change the default to show time remaining in the player bar.";
-"DISABLE_TOGGLE_TIME_REMAINING" = "Disable toggle time remaining";
-"DISABLE_TOGGLE_TIME_REMAINING_DESC" = "Disables changing time elapsed to time remaining. Use with other setting to always show remaining time.";
+"ENABLE_PORTRAIT_FULLSCREEN" = "เปิดโหมดเต็มหน้าจอแนวตั้ง";
+"ENABLE_PORTRAIT_FULLSCREEN_DESC" = "เปิดโหมดเต็มหน้าจอแนวตั้งในแอป YouTube ต้องรีสตาร์ทแอป";
+"FULLSCREEN_TO_THE_RIGHT" = "เต็มหน้าจอไปทางขวา";
+"FULLSCREEN_TO_THE_RIGHT_DESC" = "บังคับให้วิดีโอแสดงผลเต็มหน้าจอในทิศทางแนวนอนขวา ต้องรีสตาร์ทแอป";
+"ENABLE_TAP_TO_SEEK" = "เปิดใช้งานแตะเพื่อเลื่อน";
+"ENABLE_TAP_TO_SEEK_DESC" = "กระโดดไปยังตำแหน่งในวิดีโอโดยการแตะที่แถบเลื่อน";
+"DISABLE_PULL_TO_FULLSCREEN_GESTURE" = "ปิดการใช้งานการลากเพื่อเข้าสู่โหมดเต็มหน้าจอ";
+"DISABLE_PULL_TO_FULLSCREEN_GESTURE_DESC" = "ปิดการใช้งานการลากเพื่อเข้าสู่โหมดเต็มหน้าจอในแนวตั้ง ใช้กับวิดีโอที่เป็นแนวนอนเท่านั้น";
+"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER" = "ปิดการใช้งานการแตะสองครั้งเพื่อข้ามตอน";
+"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER_DESC" = "ปิดการใช้งานท่าทางการแตะสองครั้งด้วยนิ้วสองเพื่อข้ามตอนวิดีโอ";
+"ALWAYS_USE_REMAINING_TIME" = "ใช้เวลาที่เหลือเสมอ";
+"ALWAYS_USE_REMAINING_TIME_DESC" = "เปลี่ยนค่าเริ่มต้นเพื่อแสดงเวลาที่เหลือในแถบเครื่องเล่น";
+"DISABLE_TOGGLE_TIME_REMAINING" = "ปิดการใช้งานสลับเวลาที่เหลือ";
+"DISABLE_TOGGLE_TIME_REMAINING_DESC" = "ปิดการใช้งานการเปลี่ยนเวลาแสดงเวลาที่ผ่านมาเป็นเวลาที่เหลือ ใช้ร่วมกับการตั้งค่าอื่นๆ เพื่อแสดงเวลาที่เหลือตลอด";
 
-"ENABLE_SHARE_BUTTON" = "Enable Share Button";
-"ENABLE_SHARE_BUTTON_DESC" = "Enable the Share Button in video controls overlay.";
-"ENABLE_SAVE_TO_PLAYLIST_BUTTON" = "Enable Save To Playlist Button";
-"ENABLE_SAVE_TO_PLAYLIST_BUTTON_DESC" = "Enable the Save To Playlist Button in video controls overlay.";
-"HIDE_YTMUSIC_BUTTON" = "Hide Youtube Music button";
-"HIDE_YTMUSIC_BUTTON_DESC" = "Hides Youtube Music button that appears with Premium";
-"HIDE_VIDEO_TITLE_IN_FULLSCREEN" = "Hide Video Title in Fullscreen";
-"HIDE_VIDEO_TITLE_IN_FULLSCREEN_DESC" = "Hides the Video Title along with the functionality in the Top Left of the Fullscreen Video Player.";
-"HIDE_COLLAPSE_BUTTON" = "Hide Collapse Button";
-"HIDE_COLLAPSE_BUTTON_DESC" = "Hides the Arrow Collapse Button that was shown in the Top Left of the Video Player.";
-"HIDE_FULLSCREEN_BUTTON" = "Hide Fullscreen Button";
-"HIDE_FULLSCREEN_BUTTON_DESC" = "Hides the Fullscreen Button that was shown at the Bottom Right of the Video Player.";
-"HIDE_SHADOW_OVERLAY_BUTTONS" = "Hide Shadow Overlay Buttons";
-"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "Hide the Shadow Overlay on the Play/Pause, Previous, Next, Forward & Rewind Buttons.";
-"HIDE_FULLSCREEN_ACTION_BUTTONS" = "Hide Fullscreen Action Buttons";
-"HIDE_FULLSCREEN_ACTION_BUTTONS_DESC" = "Hides the buttons at the bottom of the screen when in landscape.";
-"HIDE_SUGGESTED_VIDEO" = "Hide Suggested Video";
-"HIDE_SUGGESTED_VIDEO_DESC" = "Remove the suggested video popup when finishing a video. Note that this will prevent autoplay from working.";
-"HIDE_HEATWAVES_BAR" = "Hide Heatwaves Bar";
-"HIDE_HEATWAVES_BAR_DESC" = "Hides the Heatwaves Bar that is originally shown in the Progress Bar by Default in the video player. App restart is required.";
-"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY" = "Hide Double Tap to Seek Overlay";
-"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY_DESC" = "This hides the animated double tap to seek overlay in the video player. App restart is required.";
-"HIDE_DARK_OVERLAY_BACKGROUND" = "Hide Dark Overlay Background";
-"HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "Hide the Dark Overlay Background in the video player. App restart is required.";
-"HIDE_AMBIENT_MODE_IN_FULLSCREEN" = "Hide Ambient Mode in Fullscreen";
-"HIDE_AMBIENT_MODE_IN_FULLSCREEN_DESC" = "Hides and Prevents Ambient Mode from being used in the Video Player when in Fullscreen. App restart is required.";
-"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN" = "Hide Suggested Videos in Fullscreen";
-"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN_DESC" = "Hide the suggested videos whenever in the Fullscreen Video Player. App restart is required.";
-"HIDE_ALL_VIDEOS_UNDER_PLAYER" = "Hide all videos under player";
-"HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC" = "Remove all videos under the video player. Depends on which Device Orientation.";
+"ENABLE_SHARE_BUTTON" = "เปิดใช้งานปุ่มแชร์";
+"ENABLE_SHARE_BUTTON_DESC" = "เปิดใช้งานปุ่มแชร์ในแถบควบคุมวิดีโอ";
+"ENABLE_SAVE_TO_PLAYLIST_BUTTON" = "เปิดใช้งานปุ่มบันทึกลงในเพลย์ลิสต์";
+"ENABLE_SAVE_TO_PLAYLIST_BUTTON_DESC" = "เปิดใช้งานปุ่มบันทึกลงในเพลย์ลิสต์ในแถบควบคุมวิดีโอ";
+"HIDE_YTMUSIC_BUTTON" = "ซ่อนปุ่ม YouTube Music";
+"HIDE_YTMUSIC_BUTTON_DESC" = "ซ่อนปุ่ม YouTube Music ที่แสดงเมื่อมีบัญชี Premium";
+"HIDE_VIDEO_TITLE_IN_FULLSCREEN" = "ซ่อนชื่อวิดีโอในโหมดเต็มหน้าจอ";
+"HIDE_VIDEO_TITLE_IN_FULLSCREEN_DESC" = "ซ่อนชื่อวิดีโอและฟังก์ชันที่มุมซ้ายบนของผู้เล่นวิดีโอเต็มหน้าจอ";
+"HIDE_COLLAPSE_BUTTON" = "ซ่อนปุ่มย่อ";
+"HIDE_COLLAPSE_BUTTON_DESC" = "ซ่อนปุ่มลูกศรย่อที่แสดงที่มุมซ้ายบนของผู้เล่นวิดีโอ";
+"HIDE_FULLSCREEN_BUTTON" = "ซ่อนปุ่มเต็มหน้าจอ";
+"HIDE_FULLSCREEN_BUTTON_DESC" = "ซ่อนปุ่มเต็มหน้าจอที่แสดงที่มุมขวาล่างของผู้เล่นวิดีโอ";
+"HIDE_SHADOW_OVERLAY_BUTTONS" = "ซ่อนปุ่ม Overlay เงา";
+"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "ซ่อนปุ่ม Overlay เงาในปุ่มเล่น/หยุดเล่น ปุ่มย้อนกลับ ปุ่มถัดไป ปุ่มข้างหน้า และปุ่มย้อน";
+"HIDE_FULLSCREEN_ACTION_BUTTONS" = "ซ่อนปุ่มการกระทำในโหมดเต็มหน้าจอ";
+"HIDE_FULLSCREEN_ACTION_BUTTONS_DESC" = "ซ่อนปุ่มที่อยู่ด้านล่างของหน้าจอเมื่ออยู่ในโหมดแนวนอน";
+"HIDE_SUGGESTED_VIDEO" = "ซ่อนวิดีโอที่แนะนำ";
+"HIDE_SUGGESTED_VIDEO_DESC" = "ลบหน้าต่างป๊อปอัพวิดีโอที่แนะนำเมื่อวิดีโอเล่นจบ โปรดทราบว่าการตั้งค่านี้จะทำให้ฟังก์ชันการเล่นอัตโนมัติไม่ทำงาน";
+"HIDE_HEATWAVES_BAR" = "ซ่อนแถบ Heatwaves";
+"HIDE_HEATWAVES_BAR_DESC" = "ซ่อนแถบ Heatwaves ที่แสดงในแถบความคืบหน้าของผู้เล่นวิดีโอโดยเริ่มต้น ต้องรีสตาร์ทแอป";
+"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY" = "ซ่อนป๊อปอัพการแตะสองครั้งเพื่อเลื่อน";
+"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY_DESC" = "ซ่อนการแสดงผลอนิเมชั่นการแตะสองครั้งเพื่อเลื่อนในผู้เล่นวิดีโอ ต้องรีสตาร์ทแอป";
+"HIDE_DARK_OVERLAY_BACKGROUND" = "ซ่อนพื้นหลัง Overlay มืด";
+"HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "ซ่อนพื้นหลัง Overlay มืดในผู้เล่นวิดีโอ ต้องรีสตาร์ทแอป";
+"HIDE_AMBIENT_MODE_IN_FULLSCREEN" = "ซ่อนโหมด Ambient ในโหมดเต็มหน้าจอ";
+"HIDE_AMBIENT_MODE_IN_FULLSCREEN_DESC" = "ซ่อนและป้องกันไม่ให้ใช้โหมด Ambient ในผู้เล่นวิดีโอเมื่ออยู่ในโหมดเต็มหน้าจอ ต้องรีสตาร์ทแอป";
+"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN" = "ซ่อนวิดีโอที่แนะนำในโหมดเต็มหน้าจอ";
+"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN_DESC" = "ซ่อนวิดีโอที่แนะนำเมื่ออยู่ในผู้เล่นวิดีโอเต็มหน้าจอ ต้องรีสตาร์ทแอป";
+"HIDE_ALL_VIDEOS_UNDER_PLAYER" = "ซ่อนวิดีโอทั้งหมดใต้ผู้เล่น";
+"HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC" = "ลบวิดีโอทั้งหมดที่แสดงใต้ผู้เล่น ขึ้นอยู่กับทิศทางการหมุนของอุปกรณ์";
 
-"SHORTS_QUALITY_PICKER" = "Shorts Quality Picker";
-"SHORTS_QUALITY_PICKER_DESC" = "Enables the YouTube Shorts Quality Picker";
+"SHORTS_QUALITY_PICKER" = "ตัวเลือกคุณภาพ Shorts";
+"SHORTS_QUALITY_PICKER_DESC" = "เปิดใช้งานตัวเลือกคุณภาพสำหรับ YouTube Shorts";
 
-"VIDEO_PLAYER_BUTTON_OPTIONS" = "Video Player Button Options";
+"VIDEO_PLAYER_BUTTON_OPTIONS" = "ตัวเลือกปุ่มผู้เล่นวิดีโอ";
 
-"RED_SUBSCRIBE_BUTTON" = "Red Subscribe Button";
-"RED_SUBSCRIBE_BUTTON_DESC" = "Restores the Subscribe Button Color to be Red.";
-"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER" = "Hide Button Containers under player";
-"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER_DESC" = "Hides the Button Containers under the video player.";
-"HIDE_CONNECT_BUTTON" = "Hide the Connect Button under player";
-"HIDE_CONNECT_BUTTON_DESC" = "Hides the Connect Button under the video player.";
-"HIDE_SHARE_BUTTON" = "Hide the Share Button under player";
-"HIDE_SHARE_BUTTON_DESC" = "Hides the Share Button under the video player.";
-"HIDE_THANKS_BUTTON" = "Hide the Thanks Button under player";
-"HIDE_THANKS_BUTTON_DESC" = "Hides the Thanks Button under the video player.";
-"HIDE_SAVE_BUTTON" = "Hide the Save Button under player";
-"HIDE_SAVE_BUTTON_DESC" = "Hides the Save Button under the video player.";
-"HIDE_REPORT_BUTTON" = "Hide the Report Button under player";
-"HIDE_REPORT_BUTTON_DESC" = "Hides the Report Button under the video player.";
-"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER" = "Hide Comment previews under player";
-"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER_DESC" = "Hides the comment previews under the video player.";
-"HIDE_COMMENT_SECTION_BUTTON" = "Hide the comment section under player";
-"HIDE_COMMENT_SECTION_BUTTON_DESC" = "Hides the Comment Section under the video player.";
+"RED_SUBSCRIBE_BUTTON" = "ปุ่มสมัครสีแดง";
+"RED_SUBSCRIBE_BUTTON_DESC" = "คืนค่าปุ่มสมัครสมาชิกให้เป็นสีแดง";
+"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER" = "ซ่อนภาชนะปุ่มใต้ผู้เล่น";
+"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER_DESC" = "ซ่อนภาชนะปุ่มใต้ผู้เล่นวิดีโอ";
+"HIDE_CONNECT_BUTTON" = "ซ่อนปุ่มเชื่อมต่อใต้ผู้เล่น";
+"HIDE_CONNECT_BUTTON_DESC" = "ซ่อนปุ่มเชื่อมต่อใต้ผู้เล่นวิดีโอ";
+"HIDE_SHARE_BUTTON" = "ซ่อนปุ่มแชร์ใต้ผู้เล่น";
+"HIDE_SHARE_BUTTON_DESC" = "ซ่อนปุ่มแชร์ใต้ผู้เล่นวิดีโอ";
+"HIDE_THANKS_BUTTON" = "ซ่อนปุ่มขอบคุณใต้ผู้เล่น";
+"HIDE_THANKS_BUTTON_DESC" = "ซ่อนปุ่มขอบคุณใต้ผู้เล่นวิดีโอ";
+"HIDE_SAVE_BUTTON" = "ซ่อนปุ่มบันทึกใต้ผู้เล่น";
+"HIDE_SAVE_BUTTON_DESC" = "ซ่อนปุ่มบันทึกใต้ผู้เล่นวิดีโอ";
+"HIDE_REPORT_BUTTON" = "ซ่อนปุ่มรายงานใต้ผู้เล่น";
+"HIDE_REPORT_BUTTON_DESC" = "ซ่อนปุ่มรายงานใต้ผู้เล่นวิดีโอ";
+"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER" = "ซ่อนตัวอย่างคอมเมนต์ใต้ผู้เล่น";
+"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER_DESC" = "ซ่อนตัวอย่างคอมเมนต์ใต้ผู้เล่นวิดีโอ";
+"HIDE_COMMENT_SECTION_BUTTON" = "ซ่อนปุ่มส่วนคอมเมนต์ใต้ผู้เล่น";
+"HIDE_COMMENT_SECTION_BUTTON_DESC" = "ซ่อนส่วนคอมเมนต์ใต้ผู้เล่นวิดีโอ";
 
-"APP_SETTINGS_OVERLAY_OPTIONS" = "App Settings Overlay Options";
+"APP_SETTINGS_OVERLAY_OPTIONS" = "ตัวเลือกการตั้งค่าการทับซ้อนของแอป";
 
-"HIDE_ACCOUNT_SECTION" = "Hide `Account` Section";
-"HIDE_AUTOPLAY_SECTION" = "Hide `Autoplay` Section";
-"HIDE_TRY_NEW_FEATURES_SECTION" = "Hide `Try New Features` Section";
-"HIDE_VIDEO_QUALITY_PREFERENCES_SECTION" = "Hide `Video quality preferences` Section";
-"HIDE_NOTIFICATIONS_SECTION" = "Hide `Notifications` Section";
-"HIDE_MANAGE_ALL_HISTORY_SECTION" = "Hide `Manage all history` Section";
-"HIDE_YOUR_DATA_IN_YOUTUBE_SECTION" = "Hide `Your data in YouTube` Section";
-"HIDE_PRIVACY_SECTION" = "Hide `Privacy` Section";
-"HIDE_LIVE_CHAT_SECTION" = "Hide `Live Chat` Section";
-"HIDE_GET_YOUTUBE_PREMIUM_SECTION" = "Hide `Get Youtube Premium` Section";
+"HIDE_ACCOUNT_SECTION" = "ซ่อนส่วน บัญชี";
+"HIDE_AUTOPLAY_SECTION" = "ซ่อนส่วน เล่นอัตโนมัติ";
+"HIDE_TRY_NEW_FEATURES_SECTION" = "ซ่อนส่วน ลองฟีเจอร์ใหม่";
+"HIDE_VIDEO_QUALITY_PREFERENCES_SECTION" = "ซ่อนส่วน การตั้งค่าคุณภาพวิดีโอ";
+"HIDE_NOTIFICATIONS_SECTION" = "ซ่อนส่วน การแจ้งเตือน";
+"HIDE_MANAGE_ALL_HISTORY_SECTION" = "ซ่อนส่วน จัดการประวัติทั้งหมด";
+"HIDE_YOUR_DATA_IN_YOUTUBE_SECTION" = "ซ่อนส่วน ข้อมูลของคุณใน YouTube";
+"HIDE_PRIVACY_SECTION" = "ซ่อนส่วน ความเป็นส่วนตัว";
+"HIDE_LIVE_CHAT_SECTION" = "ซ่อนส่วน แชทสด";
+"HIDE_GET_YOUTUBE_PREMIUM_SECTION" = "ซ่อนส่วน สมัคร YouTube Premium";
 
-"UI_INTERFACE_OPTIONS" = "UI Interface Options";
+"UI_INTERFACE_OPTIONS" = "ตัวเลือกอินเตอร์เฟซ UI";
 
-"HIDE_HOME_TAB" = "Hide Home Tab";
-"LOW_CONTRAST_MODE" = "Low Contrast Mode";
-"LOW_CONTRAST_MODE_DESC" = "This will lower the color contrast on texts and buttons, similar to YouTube's pre-2020 App Interface.";
-"LOW_CONTRAST_MODE_SELECTOR" = "Low Contrast Mode Selector";
-"LOW_CONTRAST_MODE_ERROR_1" = "You are using v%@ which is a discontinued version of YouTube that no longer works. Please use v17.33.2-17.38.10 in order to use LowContrastMode.";
-"LOW_CONTRAST_MODE_ERROR_2" = "LowContrastMode is only available for app versions v17.33.2-v17.38.10. \nYou are currently using v%@. \nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.";
-"FIX_LOWCONTRASTMODE" = "Fix LowContrastMode";
-"FIX_LOWCONTRASTMODE_DESC" = "This will fix and enable the LowContrastMode functionality by Spoofing to YouTube v17.38.10. App restart is required.";
-"DISABLE_MODERN_BUTTONS" = "Disable Modern Buttons";
-"DISABLE_MODERN_BUTTONS_DESC" = "This will remove the some of the new Modern/Chip Buttons in the YouTube App. App restart is required.";
-"DISABLE_ROUNDED_CORNERS_ON_HINTS" = "Disable Rounded Corners on Hints";
-"DISABLE_ROUNDED_CORNERS_ON_HINTS_DESC" = "This will make the Hints in the App to not include Rounded Corners. App restart is required.";
-"DISABLE_MODERN_FLAGS" = "Disable Modern A/B Flags";
-"DISABLE_MODERN_FLAGS_DESC" = "This will turn off any Modern Flag that was enabled by default. App restart is required.";
-"YTNOMODERNUI" = "Enable Specific UI Related Options (YTNoModernUI)";
-"YTNOMODERNUI_DESC" = "This will specifically enable other options to make the app look and feel less-modern. App restart is required.";
-"ENABLE_APP_VERSION_SPOOFER" = "Enable App Version Spoofer";
-"ENABLE_APP_VERSION_SPOOFER_DESC" = "Enable this to use the Version Spoofer and select your perferred version below. App restart is required.";
-"VERSION_SPOOFER_SELECTOR" = "Version spoofer selector";
+"HIDE_HOME_TAB" = "ซ่อนแท็บหน้าแรก";
+"LOW_CONTRAST_MODE" = "โหมดคอนทราสต์ต่ำ";
+"LOW_CONTRAST_MODE_DESC" = "จะลดความคมชัดของสีในข้อความและปุ่ม คล้ายกับอินเตอร์เฟซแอป YouTube ก่อนปี 2020";
+"LOW_CONTRAST_MODE_SELECTOR" = "ตัวเลือกโหมดคอนทราสต์ต่ำ";
+"LOW_CONTRAST_MODE_ERROR_1" = "คุณกำลังใช้ v%@ ซึ่งเป็นเวอร์ชันที่เลิกใช้งานของ YouTube ซึ่งไม่ทำงานแล้ว โปรดใช้ v17.33.2-17.38.10 เพื่อใช้โหมด LowContrastMode";
+"LOW_CONTRAST_MODE_ERROR_2" = "โหมด LowContrastMode ใช้ได้เฉพาะกับเวอร์ชันแอป v17.33.2-v17.38.10 เท่านั้น \nคุณกำลังใช้ v%@ \nวิธีแก้ปัญหา: หากต้องการใช้โหมดนี้ ฉันแนะนำให้เปิดใช้งานตัวเลือก แก้ไข LowContrastMode";
+"CLASSIC_VIDEO_PLAYER" = "ผู้เล่นวิดีโอคลาสสิค";
+"CLASSIC_VIDEO_PLAYER_DESC" = "คืนค่าฟีเจอร์ผู้เล่นวิดีโอคลาสสิคจาก v16.xx.x รวมถึงการขยายหน้าจอด้วยการบีบ";
+"FIX_LOWCONTRASTMODE" = "แก้ไข LowContrastMode (เลิกใช้)";
+"FIX_LOWCONTRASTMODE_DESC" = "จะซ่อมแซมและเปิดใช้งานฟังก์ชัน LowContrastMode โดยการปลอมแปลงเป็น YouTube v17.38.10 ต้องรีสตาร์ทแอป";
+"DISABLE_MODERN_BUTTONS" = "ปิดการใช้งานปุ่มสมัยใหม่";
+"DISABLE_MODERN_BUTTONS_DESC" = "จะลบปุ่มสมัยใหม่/ปุ่มชิปบางปุ่มในแอป YouTube ต้องรีสตาร์ทแอป";
+"DISABLE_ROUNDED_CORNERS_ON_HINTS" = "ปิดการใช้งานมุมมนในคำแนะนำ";
+"DISABLE_ROUNDED_CORNERS_ON_HINTS_DESC" = "จะทำให้คำแนะนำในแอปไม่มีมุมมน ต้องรีสตาร์ทแอป";
+"DISABLE_MODERN_FLAGS" = "ปิดการใช้งานธงโมเดิร์น A/B";
+"DISABLE_MODERN_FLAGS_DESC" = "จะปิดการใช้งานธงโมเดิร์นที่เปิดใช้งานโดยดีฟอลต์ ต้องรีสตาร์ทแอป";
+"YTNOMODERNUI" = "เปิดใช้งานตัวเลือก UI ที่เกี่ยวข้อง (YTNoModernUI)";
+"YTNOMODERNUI_DESC" = "จะเปิดใช้งานตัวเลือกอื่นๆ ที่ทำให้แอปดูและรู้สึกน้อยลงในสไตล์โมเดิร์น ต้องรีสตาร์ทแอป";
+"ENABLE_APP_VERSION_SPOOFER" = "เปิดใช้งานตัวปลอมแปลงเวอร์ชันแอป";
+"ENABLE_APP_VERSION_SPOOFER_DESC" = "เปิดใช้งานเพื่อใช้ตัวปลอมแปลงเวอร์ชันและเลือกเวอร์ชันที่คุณต้องการด้านล่าง ต้องรีสตาร์ทแอป";
+"VERSION_SPOOFER_SELECTOR" = "ตัวเลือกตัวปลอมแปลงเวอร์ชัน";
 
-"ADBLOCK_WORKAROUND_LITE" = "AdBlock Workaround (Lite)";
-"ADBLOCK_WORKAROUND_LITE_DESC" = "Uses weaker adblocking code, this will disable uYou's Adblocking Option.";
-"ADBLOCK_WORKAROUND" = "AdBlock Workaround";
-"ADBLOCK_WORKAROUND_DESC" = "Uses stronger adblocking code.";
-"FAKE_PREMIUM" = "Fake Premium";
-"FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab.";
-"FAKE_PREMIUM_WARNING" = "The *You* Tab doesn't exist in v%@, fake buttons will not be created.\nBut the *Fake Premium Logo* will still work.";
-"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
-"FAKE_DOWNLOADS" = "Downloads";
-"DISABLE_ANIMATED_YOUTUBE_LOGO" = "Disable Animated YouTube Logo";
-"CENTER_YOUTUBE_LOGO" = "Center YouTube Logo";
-"CENTER_YOUTUBE_LOGO_DESC" = "Toggle this to reposition the official YouTube Logo to the Center. App restart is required.";
-"HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
-"HIDE_YOUTUBE_LOGO_DESC" = "Toggle this to hide the YouTube Logo in the YouTube App.";
-"STICK_NAVIGATION_BAR" = "Stick Navigation Bar";
-"STICK_NAVIGATION_BAR_DESC" = "This will make the Navigation Bar stay when scrolling throughout the App.";
-"HIDE_COMMUNITY_POSTS" = "Hide Community Posts";
-"HIDE_COMMUNITY_POSTS_DESC" = "Hides the Community Posts. App restart is required.";
-"HIDE_HEADER_LINKS_UNDER_PROFILE" = "Hide Header Links under channel profile";
-"HIDE_HEADER_LINKS_UNDER_PROFILE_DESC" = "Hides the Header Links under any channel profile.";
-"AUTO_HIDE_HOME_INDICATOR" = "Auto-Hide Home Indicator";
-"AUTO_HIDE_HOME_INDICATOR_DESC" = "Automatically Hides the iOS Home Indicator when not interacting with the App.";
-"HIDE_INDICATORS" = "Hide Indicators";
-"HIDE_INDICATORS_DESC" = "Hides all Indicators that are currently in the App.";
-"FIX_CASTING" = "Fix Casting";
-"FIX_CASTING_DESC" = "Changes certain A/B flags to fix casting.";
+"ADBLOCK_WORKAROUND_LITE" = "ทางแก้ไข AdBlock (Lite)";
+"ADBLOCK_WORKAROUND_LITE_DESC" = "ใช้โค้ดบล็อกโฆษณาที่อ่อนแอ เป็นการปิดใช้งานตัวเลือกการบล็อกโฆษณาของ uYou";
+"ADBLOCK_WORKAROUND" = "ทางแก้ไข AdBlock";
+"ADBLOCK_WORKAROUND_DESC" = "ใช้โค้ดบล็อกโฆษณาที่แข็งแกร่ง";
+"FAKE_PREMIUM" = "Premium ปลอม"; "FAKE_PREMIUM_DESC" = "ใช้โลโก้ Premium และสร้างปุ่มปลอมในแท็บ You จะปิดการใช้งานโลโก้ YouTube อนิเมชั่น";
+"FAKE_PREMIUM_WARNING" = "แท็บ You ไม่มีใน v%@, ปุ่มปลอมจะไม่ได้สร้างขึ้น \nแต่ โลโก้ Premium ปลอม จะยังคงทำงาน";
+"FAKE_YOUR_PREMIUM_BENEFITS" = "สิทธิพิเศษ Premium ของคุณ";
+"FAKE_DOWNLOADS" = "การดาวน์โหลด";
+"DISABLE_ANIMATED_YOUTUBE_LOGO" = "ปิดการใช้งานโลโก้ YouTube อนิเมชั่น";
+"CENTER_YOUTUBE_LOGO" = "จัดโลโก้ YouTube ให้อยู่กลาง";
+"CENTER_YOUTUBE_LOGO_DESC" = "เปิดปิดตัวเลือกนี้เพื่อย้ายโลโก้ YouTube ไปยังกลางหน้าจอ ต้องรีสตาร์ทแอป";
+"HIDE_YOUTUBE_LOGO" = "ซ่อนโลโก้ YouTube";
+"HIDE_YOUTUBE_LOGO_DESC" = "เปิดปิดตัวเลือกนี้เพื่อซ่อนโลโก้ YouTube ในแอป YouTube";
+"STICK_NAVIGATION_BAR" = "ยึดแถบการนำทาง";
+"STICK_NAVIGATION_BAR_DESC" = "จะทำให้แถบการนำทางคงอยู่เมื่อเลื่อนผ่านแอป";
+"HIDE_COMMUNITY_POSTS" = "ซ่อนโพสต์ชุมชน";
+"HIDE_COMMUNITY_POSTS_DESC" = "ซ่อนโพสต์ชุมชน ต้องรีสตาร์ทแอป";
+"HIDE_HEADER_LINKS_UNDER_PROFILE" = "ซ่อนลิงก์หัวข้อใต้โปรไฟล์ช่อง";
+"HIDE_HEADER_LINKS_UNDER_PROFILE_DESC" = "ซ่อนลิงก์หัวข้อใต้โปรไฟล์ของช่อง";
+"AUTO_HIDE_HOME_INDICATOR" = "ซ่อนตัวชี้วัดหน้าแรกอัตโนมัติ";
+"AUTO_HIDE_HOME_INDICATOR_DESC" = "ซ่อนตัวชี้วัดหน้าแรกของ iOS เมื่อไม่ได้โต้ตอบกับแอป";
+"HIDE_INDICATORS" = "ซ่อนตัวชี้วัด";
+"HIDE_INDICATORS_DESC" = "ซ่อนตัวชี้วัดทั้งหมดในแอป";
+"FIX_CASTING" = "แก้ไขการส่ง";
+"FIX_CASTING_DESC" = "เปลี่ยนธงบางประการเพื่อแก้ไขการส่ง";
+"NEW_SETTINGS_UI" = "ใช้ UI การตั้งค่าใหม่";
+"NEW_SETTINGS_UI_DESC" = "เปิดใช้งาน UI การตั้งค่าใหม่พร้อมหมวดหมู่การปรับแต่ง";
 
-"DEFAULT" = "Default";
-"CUSTOM_COLOR" = "Custom Color";
-"RESTART_REQUIRED" = "App restart is required.";
+"DEFAULT" = "ค่าเริ่มต้น";
+"CUSTOM_COLOR" = "สีที่กำหนดเอง";
+"RESTART_REQUIRED" = "ต้องรีสตาร์ทแอป";

@@ -75,6 +75,9 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "STOCK_VOLUME_HUD" = "Use stock iOS volume HUD";
 "STOCK_VOLUME_HUD_DESC" = "";
 
+"REPLACE_YT_DOWNLOAD_WITH_UYOU" = "Replace YouTube's download with uYou's";
+"REPLACE_YT_DOWNLOAD_WITH_UYOU_DESC" = "";
+
 // Video controls overlay options
 "VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video controls overlay options";
 
@@ -182,6 +185,8 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 
 "ENABLE_PORTRAIT_FULLSCREEN" = "Enable Portrait Fullscreen";
 "ENABLE_PORTRAIT_FULLSCREEN_DESC" = "Enables Portrait Fullscreen on the YouTube App. App restart is required.";
+"FULLSCREEN_TO_THE_RIGHT" = "Fullscreen to the Right";
+"FULLSCREEN_TO_THE_RIGHT_DESC" = "FULLSCREEN_TO_THE_RIGHT_DESC" = "Force the video to always go to landscape right. App restart is required.";
 "ENABLE_TAP_TO_SEEK" = "Enable Tap To Seek";
 "ENABLE_TAP_TO_SEEK_DESC" = "Jump to anywhere in a video by single-tapping the seek bar";
 "DISABLE_PULL_TO_FULLSCREEN_GESTURE" = "Disable pull-to-fullscreen gesture";
@@ -269,7 +274,9 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "LOW_CONTRAST_MODE_SELECTOR" = "Low Contrast Mode Selector";
 "LOW_CONTRAST_MODE_ERROR_1" = "You are using v%@ which is a discontinued version of YouTube that no longer works. Please use v17.33.2-17.38.10 in order to use LowContrastMode.";
 "LOW_CONTRAST_MODE_ERROR_2" = "LowContrastMode is only available for app versions v17.33.2-v17.38.10. \nYou are currently using v%@. \nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.";
-"FIX_LOWCONTRASTMODE" = "Fix LowContrastMode";
+"CLASSIC_VIDEO_PLAYER" = "Classic Video Player";
+"CLASSIC_VIDEO_PLAYER_DESC" = "Restores the classic video player features from v16.xx.x, including pinch-to-fullscreen.";
+"FIX_LOWCONTRASTMODE" = "Fix LowContrastMode (Deprecated)";
 "FIX_LOWCONTRASTMODE_DESC" = "This will fix and enable the LowContrastMode functionality by Spoofing to YouTube v17.38.10. App restart is required.";
 "DISABLE_MODERN_BUTTONS" = "Disable Modern Buttons";
 "DISABLE_MODERN_BUTTONS_DESC" = "This will remove the some of the new Modern/Chip Buttons in the YouTube App. App restart is required.";
@@ -288,7 +295,7 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "ADBLOCK_WORKAROUND" = "AdBlock Workaround";
 "ADBLOCK_WORKAROUND_DESC" = "Uses stronger adblocking code.";
 "FAKE_PREMIUM" = "Fake Premium";
-"FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab.";
+"FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab. Will disable animated YouTube logo.";
 "FAKE_PREMIUM_WARNING" = "The *You* Tab doesn't exist in v%@, fake buttons will not be created.\nBut the *Fake Premium Logo* will still work.";
 "FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
 "FAKE_DOWNLOADS" = "Downloads";
@@ -309,6 +316,8 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_INDICATORS_DESC" = "Hides all Indicators that are currently in the App.";
 "FIX_CASTING" = "Fix Casting";
 "FIX_CASTING_DESC" = "Changes certain A/B flags to fix casting.";
+"NEW_SETTINGS_UI" = "Use New Settings UI";
+"NEW_SETTINGS_UI_DESC" = "Enables the new Settings UI with tweak categories.";
 
 "DEFAULT" = "Default";
 "CUSTOM_COLOR" = "Custom Color";

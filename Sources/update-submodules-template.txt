@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
 
       - name: Set up Git
         run: |
@@ -20,11 +20,12 @@ jobs:
 
       - name: Add uYouEnhanced submodules
         run: |
-          git submodule add https://github.com/dayanch96/uYouLocalization.git Tweaks/uYouLocalization
           git submodule add https://github.com/arichornloverALT/YTHoldForSpeed.git Tweaks/YTHoldForSpeed
           git submodule add https://github.com/arichornloverALT/YouGroupSettings.git Tweaks/YouGroupSettings
           git submodule add https://github.com/arichornloverALT/YouTimeStamp.git Tweaks/YouTimeStamp
           git submodule add https://github.com/bhackel/YouLoop.git Tweaks/YouLoop
+          git submodule add https://github.com/dayanch96/uYouLocalization.git Tweaks/uYouLocalization
+          git submodule add https://github.com/PoomSmart/YTIcons Tweaks/YTIcons
           git submodule add https://github.com/protocolbuffers/protobuf.git Tweaks/protobuf
           git add .
           git commit -m "added uYouEnhanced submodules"
@@ -59,6 +60,8 @@ jobs:
           git submodule update --init --recursive --remote Tweaks/YTABConfig
           git add .
           git submodule update --init --recursive --remote Tweaks/YTClassicVideoQuality
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YTIcons
           git add .
           git submodule update --init --recursive --remote Tweaks/YTUHD
           git add .

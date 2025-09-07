@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Set up Git
         run: |
@@ -22,21 +22,19 @@ jobs:
           git add .
           git submodule update --init --recursive --remote Tweaks/DontEatMyContent
           git add .
-          git submodule update --init --recursive --remote Tweaks/YTHoldForSpeed
+          git submodule update --init --recursive --remote Tweaks/iSponsorBlock
           git add .
-          git submodule update --init --recursive --remote Tweaks/YTSpeed
+          git submodule update --init --recursive --remote Tweaks/protobuf
+          git add .
+          git submodule update --init --recursive --remote Tweaks/PSHeader
           git add .
           git submodule update --init --recursive --remote Tweaks/Return-YouTube-Dislikes
           git add .
           git submodule update --init --recursive --remote Tweaks/uYouLocalization
           git add .
-          git submodule update --init --recursive --remote Tweaks/YTABConfig
+          git submodule update --init --recursive --remote Tweaks/YouGroupSettings
           git add .
-          git submodule update --init --recursive --remote Tweaks/YTClassicVideoQuality
-          git add .
-          git submodule update --init --recursive --remote Tweaks/YTUHD
-          git add .
-          git submodule update --init --recursive --remote Tweaks/YTVideoOverlay
+          git submodule update --init --recursive --remote Tweaks/YouLoop
           git add .
           git submodule update --init --recursive --remote Tweaks/YouMute
           git add .
@@ -44,15 +42,25 @@ jobs:
           git add .
           git submodule update --init --recursive --remote Tweaks/YouQuality
           git add .
-          git submodule update --init --recursive --remote Tweaks/YouTimeStamp
+          git submodule update --init --recursive --remote Tweaks/YouSlider
           git add .
-          git submodule update --init --recursive --remote Tweaks/YouGroupSettings
+          git submodule update --init --recursive --remote Tweaks/YouSpeed
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YouTimeStamp
           git add .
           git submodule update --init --recursive --remote Tweaks/YouTubeHeader
           git add .
-          git submodule update --init --recursive --remote Tweaks/iSponsorBlock
+          git submodule update --init --recursive --remote Tweaks/YTABConfig
           git add .
-          git submodule update --init --recursive --remote Tweaks/protobuf
+          git submodule update --init --recursive --remote Tweaks/YTClassicVideoQuality
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YTHoldForSpeed
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YTIcons
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YTUHD
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YTVideoOverlay
           git add .
           git submodule update --init --recursive
           git commit -m "updated submodules"
