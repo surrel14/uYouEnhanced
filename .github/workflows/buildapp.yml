@@ -59,6 +59,13 @@ jobs:
       contents: write
 
     steps:
+      - name: Hash YT IPA url and download it
+        run: |
+          URL_YT="$(jq -r '.inputs.decrypted_youtube_url' $GITHUB_EVENT_PATH)"
+          echo ::add-mask::$URL_YT
+          echo URL_YT=$URL_YT >> $GITHUB_ENV
+          wget "$URL_YT" --quiet --no-verbose -O YouTube.ipa
+
       - name: Checkout Main
         uses: actions/checkout@v5
         with:
@@ -115,27 +122,17 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Hash YT ipa url
-        run: |
-          URL_YT="$(jq -r '.inputs.decrypted_youtube_url' $GITHUB_EVENT_PATH)"
-          echo ::add-mask::$URL_YT
-          echo URL_YT=$URL_YT >> $GITHUB_ENV
-
-      - name: Prepare YouTube iPA
+      - name: Prepare YT IPA
         id: prepare_youtube
         run: |
-          wget "$YOUTUBE_URL" --quiet --no-verbose -O main/YouTube.ipa
-          cd ${{ github.workspace }}/main
-          mv YouTube.ipa YouTube.zip
+          mv YouTube.ipa main/YouTube.zip
           unzip -q YouTube.zip
           youtube_version=$(defaults read "$(pwd)/Payload/YouTube.app/Info" CFBundleVersion)
           echo "==> YouTube v$youtube_version downloaded!"
           sed -i '' "17s#.*#YOUTUBE_VERSION = ${youtube_version}#g" Makefile
           echo "youtube_version=${youtube_version}" >> $GITHUB_OUTPUT
-
         env:
           THEOS: ${{ github.workspace }}/theos
-          YOUTUBE_URL: ${{ env.URL_YT }}
 
       - name: Fix compiling & Build Package
         id: build_package
