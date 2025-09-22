@@ -287,7 +287,7 @@ And thanks to the developers qnblackcat, PoomSmart & other  allowing me to expan
 
 18. **YTAppVersionSpoofer:** This tweak allows users to spoof the version of the YouTube app they are using, this is designed to spoof to older YouTube App versions. This can be useful for bypassing certain version checks or retaining features that may have been removed/disabled in newer updates. **<-- uYouEnhanced Exclusive Feature (subject to change)**
 
-19. **LowContrastMode (17.33.2-18.34.5 OUTDATED):** LowContrastMode is a tweak that allows users to darken the text in the YouTube app, making it easier to read. which sadly suffers from incompatibility issues and doesn't work right now as of March 19th 2025. **<-- uYouEnhanced Exclusive Feature (subject to change)**
+19. **LowContrastMode:** LowContrastMode is a tweak that allows users to darken the text in the YouTube app, making it easier to read. which sadly suffers from incompatibility issues and doesn't work right now as of March 19th 2025. **<-- uYouEnhanced Exclusive Feature (subject to change)**
 
 </details>
 
@@ -303,9 +303,7 @@ And thanks to the developers qnblackcat, PoomSmart & other  allowing me to expan
 - **Compatibility:** Requires iOS/iPadOS 16.0 or later.
 - For AltStore user: 
 
-  - My official AltStore repo (uYouEnhanced - **iOS 15+**): https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps.json
-
-  - My alternative AltStore repo (uYouEnhanced - **iOS 14+ - mainly for Trollstore users**): https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps-legacy.json - not sure if i can update this ipa. this IPA will be locked in YouTube Version **19.20.2**
+  - My official AltStore repo (uYouEnhanced - **iOS 16+**): https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps.json
 
   - [Open in AltStore (v20.05.4-3.0.4)](https://tinyurl.com/33wr56zm) - It will take a while to install because AltStore needs to download the IPA first.
   - NEWS - Nov 27 2024: Please be aware that some of the **uYou** features aren't working in newer versions of YouTube.
