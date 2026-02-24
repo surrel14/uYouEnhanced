@@ -62,6 +62,8 @@ jobs:
           git add .
           git submodule update --init --recursive --remote Tweaks/YTVideoOverlay
           git add .
+          git submodule update --init --recursive --remote Tweaks/YTweaks
+          git add .
           git submodule update --init --recursive
           git commit -m "updated submodules"
           git push

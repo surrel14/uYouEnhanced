@@ -565,12 +565,26 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
         kLowContrastMode,
         ({
             if (enable) {
+                if (@available(iOS 16.0, *)) {
+                } else {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Outdated iOS Version" message:@"LowContrastMode is designed for iOS 16 or higher. You are running an older iOS version. Enable anyway?" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Enable" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kLowContrastMode];
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+                    [alert addAction:okAction];
+                    [alert addAction:cancelAction];
+                    [settingsViewController presentViewController:alert animated:YES completion:nil];
+                    return NO;
+                }
                 Class YTVersionUtilsClass = %c(YTVersionUtils);
                 NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
-                NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
-                NSComparisonResult result2 = [appVersion compare:@"17.38.10" options:NSNumericSearch];
+                NSComparisonResult result1 = [appVersion compare:@"19.01.1" options:NSNumericSearch];
+                NSComparisonResult result2 = [appVersion compare:@"20.33.2" options:NSNumericSearch];
                 if (result1 == NSOrderedAscending) {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Discontinued Version" message:[NSString stringWithFormat:@"You are using v%@, a discontinued version of YouTube that may not work with LowContrastMode. Supported versions are v17.33.2-v17.38.10. Enable anyway?", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Discontinued YouTube Version" message:[NSString stringWithFormat:@"You are using v%@, a discontinued version of YouTube that may not work with LowContrastMode. Supported versions are v19.01.1-v20.33.2. Enable anyway?", appVersion] preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Enable" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kLowContrastMode];
                         [settingsViewController reloadData];
@@ -582,7 +596,7 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
                     [settingsViewController presentViewController:alert animated:YES completion:nil];
                     return NO;
                 } else if (result2 == NSOrderedDescending) {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible Version" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions v17.33.2-v17.38.10. You are using v%@. Enable anyway?", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible YouTube Version" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions v19.01.1-v20.33.2. You are using v%@. Enable anyway?", appVersion] preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Enable" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kLowContrastMode];
                         [settingsViewController reloadData];
@@ -594,7 +608,7 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
                     [settingsViewController presentViewController:alert animated:YES completion:nil];
                     return NO;
                 } else if (UIScreen.mainScreen.traitCollection.userInterfaceStyle != UIUserInterfaceStyleDark) {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Light Mode Detected" message:@"LowContrastMode is only available in Dark Mode. Please switch to Dark Mode to be able to use LowContrastMode." preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Light Mode Detected" message:@"LowContrastMode is only designed for Dark Mode in mind. Please enable Dark Mode to be able to use LowContrastMode." preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                     [alert addAction:okAction];
                     [settingsViewController presentViewController:alert animated:YES completion:nil];
@@ -625,7 +639,7 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
                 Class YTVersionUtilsClass = %c(YTVersionUtils);
                 NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
                 // Alert the user that they need to enable the fix
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions v17.33.2-v17.38.10. \nYou are currently using v%@. \n\nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible YouTube Version" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions v19.01.1-v20.33.2. You are using v%@. Enable anyway?", appVersion] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
                 [settingsViewController presentViewController:alert animated:YES completion:nil];
@@ -642,7 +656,6 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
                         [settingsViewController reloadData];
                         return YES;
                     }]
-
                 ];
                 YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"Low Contrast Mode Selector") pickerSectionTitle:nil rows:rows selectedItemIndex:contrastMode() parentResponder:[self parentResponder]];
                 [settingsViewController pushViewController:picker];
@@ -652,16 +665,14 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
     ];
     [sectionItems addObject:lowContrastModeButton];
     SWITCH2(LOC(@"CLASSIC_VIDEO_PLAYER"), LOC(@"CLASSIC_VIDEO_PLAYER_DESC"), kClassicVideoPlayer);
-    SWITCH2(LOC(@"DISABLE_MODERN_BUTTONS"), LOC(@"DISABLE_MODERN_BUTTONS_DESC"), kDisableModernButtons);
     SWITCH2(LOC(@"DISABLE_ROUNDED_CORNERS_ON_HINTS"), LOC(@"DISABLE_ROUNDED_CORNERS_ON_HINTS_DESC"), kDisableRoundedHints);
-    SWITCH2(LOC(@"DISABLE_MODERN_FLAGS"), LOC(@"DISABLE_MODERN_FLAGS_DESC"), kDisableModernFlags);
     SWITCH3(
         LOC(@"YTNOMODERNUI"), 
         LOC(@"YTNOMODERNUI_DESC"), 
         kYTNoModernUI,
         ({
             if (enable) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will force-enable other settings on restart. To disable them, you must turn this setting off." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will force-enable other settings on restart. To disable them, you must turn this setting off. (YTNoModernUI is Deprecated)" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
                 [settingsViewController presentViewController:alert animated:YES completion:nil];
@@ -678,303 +689,267 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
         accessibilityIdentifier:nil
         detailTextBlock:^NSString *() {
             switch (appVersionSpoofer()) {
-                case 0:
-                    return @"v20.33.2";
-                case 1:
-                    return @"v20.32.5";
-                case 2:
-                    return @"v20.32.4";
-                case 3:
-                    return @"v20.31.6";
-                case 4:
-                    return @"v20.31.5";
-                case 5:
-                    return @"v20.30.5";
-                case 6:
-                    return @"v20.29.3";
-                case 7:
-                    return @"v20.28.2";
-                case 8:
-                    return @"v20.26.7";
-                case 9:
-                    return @"v20.25.4";
-                case 10:
-                    return @"v20.24.5";
-                case 11:
-                    return @"v20.24.4";
-                case 12:
-                    return @"v20.23.3";
-                case 13:
-                    return @"v20.22.1";
-                case 14:
-                    return @"v20.21.6";
-                case 15:
-                    return @"v20.20.7";
-                case 16:
-                    return @"v20.20.5";
-                case 17:
-                    return @"v20.19.3";
-                case 18:
-                    return @"v20.19.2";
-                case 19:
-                    return @"v20.18.5";
-                case 20:
-                    return @"v20.18.4";
-                case 21:
-                    return @"v20.16.7";
-                case 22:
-                    return @"v20.15.1";
-                case 23:
-                    return @"v20.14.2";
-                case 24:
-                    return @"v20.13.5";
-                case 25:
-                    return @"v20.12.4";
-                case 26:
-                    return @"v20.11.6";
-                case 27:
-                    return @"v20.10.4";
-                case 28:
-                    return @"v20.10.3";
-                case 29:
-                    return @"v20.09.3";
-                case 30:
-                    return @"v20.08.3";
-                case 31:
-                    return @"v20.07.6";
-                case 32:
-                    return @"v20.06.03";
-                case 33:
-                    return @"v20.05.4";
-                case 34:
-                    return @"v20.03.1";
-                case 35:
-                    return @"v20.03.02";
-                case 36:
-                    return @"v20.02.3";
-                case 37:
-                    return @"v19.49.7";
-                case 38:
-                    return @"v19.49.5";
-                case 39:
-                    return @"v19.49.3";
-                case 40:
-                    return @"v19.47.7";
-                case 41:
-                    return @"v19.46.3";
-                case 42:
-                    return @"v19.45.4";
-                case 43:
-                    return @"v19.44.4";
-                case 44:
-                    return @"v19.43.2";
-                case 45:
-                    return @"v19.42.1";
-                case 46:
-                    return @"v19.41.3";
-                case 47:
-                    return @"v19.40.4";
-                case 48:
-                    return @"v19.39.1";
-                case 49:
-                    return @"v19.38.2";
-                case 50:
-                    return @"v19.37.2";
-                case 51:
-                    return @"v19.36.1";
-                case 52:
-                    return @"v19.35.3";
-                case 53:
-                    return @"v19.34.2";
-                case 54:
-                    return @"v19.33.2";
-                case 55:
-                    return @"v19.32.8";
-                case 56:
-                    return @"v19.32.6";
-                case 57:
-                    return @"v19.31.4";
-                case 58:
-                    return @"v19.30.2";
-                case 59:
-                    return @"v19.29.1";
-                case 60:
-                    return @"v19.28.1";
-                case 61:
-                    return @"v19.26.5";
-                case 62:
-                    return @"v19.25.4";
-                case 63:
-                    return @"v19.25.3";
-                case 64:
-                    return @"v19.24.3";
-                case 65:
-                    return @"v19.24.2";
-                case 66:
-                    return @"v19.23.3";
-                case 67:
-                    return @"v19.22.6";
-                case 68:
-                    return @"v19.22.3";
-                case 69:
-                    return @"v19.21.3";
-                case 70:
-                    return @"v19.21.2";
-                case 71:
-                    return @"v19.20.2";
-                case 72:
-                    return @"v19.19.7";
-                case 73:
-                    return @"v19.19.5";
-                case 74:
-                    return @"v19.18.2";
-                case 75:
-                    return @"v19.17.2";
-                case 76:
-                    return @"v19.16.3";
-                case 77:
-                    return @"v19.15.1";
-                case 78:
-                    return @"v19.14.3";
-                case 79:
-                    return @"v19.14.2";
-                case 80:
-                    return @"v19.13.1";
-                case 81:
-                    return @"v19.12.3";
-                case 82:
-                    return @"v19.10.7";
-                case 83:
-                    return @"v19.10.6";
-                case 84:
-                    return @"v19.10.5";
-                case 85:
-                    return @"v19.09.4";
-                case 86:
-                    return @"v19.09.3";
-                case 87:
-                    return @"v19.08.2";
-                case 88:
-                    return @"v19.07.5";
-                case 89:
-                    return @"v19.07.4";
-                case 90:
-                    return @"v19.06.2";
-                case 91:
-                    return @"v19.05.5";
-                case 92:
-                    return @"v19.05.3";
-                case 93:
-                    return @"v19.04.3";
-                case 94:
-                    return @"v19.03.2";
-                case 95:
-                    return @"v19.02.1";
-                case 96:
-                    return @"v19.01.1";
-                default:
-                    return @"v20.33.2";
+                case 0: return @"v21.08.3";
+                case 1: return @"v21.07.4";
+                case 2: return @"v21.06.2";
+                case 3: return @"v21.05.3";
+                case 4: return @"v21.04.2";
+                case 5: return @"v21.03.2";
+                case 6: return @"v21.02.3";
+                case 7: return @"v20.50.10";
+                case 8: return @"v20.50.9";
+                case 9: return @"v20.50.6";
+                case 10: return @"v20.49.5";
+                case 11: return @"v20.47.3";
+                case 12: return @"v20.46.3";
+                case 13: return @"v20.46.2";
+                case 14: return @"v20.45.3";
+                case 15: return @"v20.44.2";
+                case 16: return @"v20.43.3";
+                case 17: return @"v20.42.3";
+                case 18: return @"v20.41.5";
+                case 19: return @"v20.41.4";
+                case 20: return @"v20.40.4";
+                case 21: return @"v20.39.6";
+                case 22: return @"v20.39.5";
+                case 23: return @"v20.39.4";
+                case 24: return @"v20.38.4";
+                case 25: return @"v20.38.3";
+                case 26: return @"v20.37.5";
+                case 27: return @"v20.37.3";
+                case 28: return @"v20.36.3";
+                case 29: return @"v20.35.2";
+                case 30: return @"v20.34.2";
+                case 31: return @"v20.33.2";
+                case 32: return @"v20.32.5";
+                case 33: return @"v20.32.4";
+                case 34: return @"v20.31.6";
+                case 35: return @"v20.31.5";
+                case 36: return @"v20.30.5";
+                case 37: return @"v20.29.3";
+                case 38: return @"v20.28.2";
+                case 39: return @"v20.26.7";
+                case 40: return @"v20.25.4";
+                case 41: return @"v20.24.5";
+                case 42: return @"v20.24.4";
+                case 43: return @"v20.23.3";
+                case 44: return @"v20.22.1";
+                case 45: return @"v20.21.6";
+                case 46: return @"v20.20.7";
+                case 47: return @"v20.20.5";
+                case 48: return @"v20.19.3";
+                case 49: return @"v20.19.2";
+                case 50: return @"v20.18.5";
+                case 51: return @"v20.18.4";
+                case 52: return @"v20.16.7";
+                case 53: return @"v20.15.1";
+                case 54: return @"v20.14.2";
+                case 55: return @"v20.13.5";
+                case 56: return @"v20.12.4";
+                case 57: return @"v20.11.6";
+                case 58: return @"v20.10.4";
+                case 59: return @"v20.10.3";
+                case 60: return @"v20.09.3";
+                case 61: return @"v20.08.3";
+                case 62: return @"v20.07.6";
+                case 63: return @"v20.06.03";
+                case 64: return @"v20.05.4";
+                case 65: return @"v20.03.1";
+                case 66: return @"v20.03.02";
+                case 67: return @"v20.02.3";
+                case 68: return @"v19.49.7";
+                case 69: return @"v19.49.5";
+                case 70: return @"v19.49.3";
+                case 71: return @"v19.47.7";
+                case 72: return @"v19.46.3";
+                case 73: return @"v19.45.4";
+                case 74: return @"v19.44.4";
+                case 75: return @"v19.43.2";
+                case 76: return @"v19.42.1";
+                case 77: return @"v19.41.3";
+                case 78: return @"v19.40.4";
+                case 79: return @"v19.39.1";
+                case 80: return @"v19.38.2";
+                case 81: return @"v19.37.2";
+                case 82: return @"v19.36.1";
+                case 83: return @"v19.35.3";
+                case 84: return @"v19.34.2";
+                case 85: return @"v19.33.2";
+                case 86: return @"v19.32.8";
+                case 87: return @"v19.32.6";
+                case 88: return @"v19.31.4";
+                case 89: return @"v19.30.2";
+                case 90: return @"v19.29.1";
+                case 91: return @"v19.28.1";
+                case 92: return @"v19.26.5";
+                case 93: return @"v19.25.4";
+                case 94: return @"v19.25.3";
+                case 95: return @"v19.24.3";
+                case 96: return @"v19.24.2";
+                case 97: return @"v19.23.3";
+                case 98: return @"v19.22.6";
+                case 99: return @"v19.22.3";
+                case 100: return @"v19.21.3";
+                case 101: return @"v19.21.2";
+                case 102: return @"v19.20.2 (Deprecated)";
+                case 103: return @"v19.19.7 (Deprecated)";
+                case 104: return @"v19.19.5 (Deprecated)";
+                case 105: return @"v19.18.2 (Deprecated)";
+                case 106: return @"v19.17.2 (Deprecated)";
+                case 107: return @"v19.16.3 (Deprecated)";
+                case 108: return @"v19.15.1 (Deprecated)";
+                case 109: return @"v19.14.3 (Deprecated)";
+                case 110: return @"v19.14.2 (Deprecated)";
+                case 111: return @"v19.13.1 (Deprecated)";
+                case 112: return @"v19.12.3 (Deprecated)";
+                case 113: return @"v19.10.7 (Deprecated)";
+                case 114: return @"v19.10.6 (Deprecated)";
+                case 115: return @"v19.10.5 (Deprecated)";
+                case 116: return @"v19.09.4 (Deprecated)";
+                case 117: return @"v19.09.3 (Deprecated)";
+                case 118: return @"v19.08.2 (Deprecated)";
+                case 119: return @"v19.07.5 (Deprecated)";
+                case 120: return @"v19.07.4 (Deprecated)";
+                case 121: return @"v19.06.2 (Deprecated)";
+                case 122: return @"v19.05.5 (Deprecated)";
+                case 123: return @"v19.05.3 (Deprecated)";
+                case 124: return @"v19.04.3 (Deprecated)";
+                case 125: return @"v19.03.2 (Deprecated)";
+                case 126: return @"v19.02.1 (Deprecated)";
+                case 127: return @"v19.01.1 (Deprecated)";
+                default: return @"v21.08.3";
             }
         }
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             NSArray <YTSettingsSectionItem *> *rows = @[
-                SPOOFER_VERSION(@"v20.33.2", 0),
-                SPOOFER_VERSION(@"v20.32.5", 1),
-                SPOOFER_VERSION(@"v20.32.4", 2),
-                SPOOFER_VERSION(@"v20.31.6", 3),
-                SPOOFER_VERSION(@"v20.31.5", 4),
-                SPOOFER_VERSION(@"v20.30.5", 5),
-                SPOOFER_VERSION(@"v20.29.3", 6),
-                SPOOFER_VERSION(@"v20.28.2", 7),
-                SPOOFER_VERSION(@"v20.26.7", 8),
-                SPOOFER_VERSION(@"v20.25.4", 9),
-                SPOOFER_VERSION(@"v20.24.5", 10),
-                SPOOFER_VERSION(@"v20.24.4", 11),
-                SPOOFER_VERSION(@"v20.23.3", 12),
-                SPOOFER_VERSION(@"v20.22.1", 13),
-                SPOOFER_VERSION(@"v20.21.6", 14),
-                SPOOFER_VERSION(@"v20.20.7", 15),
-                SPOOFER_VERSION(@"v20.20.5", 16),
-                SPOOFER_VERSION(@"v20.19.3", 17),
-                SPOOFER_VERSION(@"v20.19.2", 18),
-                SPOOFER_VERSION(@"v20.18.5", 19),
-                SPOOFER_VERSION(@"v20.18.4", 20),
-                SPOOFER_VERSION(@"v20.16.7", 21),
-                SPOOFER_VERSION(@"v20.15.1", 22),
-                SPOOFER_VERSION(@"v20.14.2", 23),
-                SPOOFER_VERSION(@"v20.13.5", 24),
-                SPOOFER_VERSION(@"v20.12.4", 25),
-                SPOOFER_VERSION(@"v20.11.6", 26),
-                SPOOFER_VERSION(@"v20.10.4", 27),
-                SPOOFER_VERSION(@"v20.10.3", 28),
-                SPOOFER_VERSION(@"v20.09.3", 29),
-                SPOOFER_VERSION(@"v20.08.3", 30),
-                SPOOFER_VERSION(@"v20.07.6", 31),
-                SPOOFER_VERSION(@"v20.06.03", 32),
-                SPOOFER_VERSION(@"v20.05.4", 33),
-                SPOOFER_VERSION(@"v20.03.1", 34),
-                SPOOFER_VERSION(@"v20.03.02", 35),
-                SPOOFER_VERSION(@"v20.02.3", 36),
-                SPOOFER_VERSION(@"v19.49.7", 37),
-                SPOOFER_VERSION(@"v19.49.5", 38),
-                SPOOFER_VERSION(@"v19.49.3", 39),
-                SPOOFER_VERSION(@"v19.47.7", 40),
-                SPOOFER_VERSION(@"v19.46.3", 41),
-                SPOOFER_VERSION(@"v19.45.4", 42),
-                SPOOFER_VERSION(@"v19.44.4", 43),
-                SPOOFER_VERSION(@"v19.43.2", 44),
-                SPOOFER_VERSION(@"v19.42.1", 45),
-                SPOOFER_VERSION(@"v19.41.3", 46),
-                SPOOFER_VERSION(@"v19.40.4", 47),
-                SPOOFER_VERSION(@"v19.39.1", 48),
-                SPOOFER_VERSION(@"v19.38.2", 49),
-                SPOOFER_VERSION(@"v19.37.2", 50),
-                SPOOFER_VERSION(@"v19.36.1", 51),
-                SPOOFER_VERSION(@"v19.35.3", 52),
-                SPOOFER_VERSION(@"v19.34.2", 53),
-                SPOOFER_VERSION(@"v19.33.2", 54),
-                SPOOFER_VERSION(@"v19.32.8", 55),
-                SPOOFER_VERSION(@"v19.32.6", 56),
-                SPOOFER_VERSION(@"v19.31.4", 57),
-                SPOOFER_VERSION(@"v19.30.2", 58),
-                SPOOFER_VERSION(@"v19.29.1", 59),
-                SPOOFER_VERSION(@"v19.28.1", 60),
-                SPOOFER_VERSION(@"v19.26.5", 61),
-                SPOOFER_VERSION(@"v19.25.4", 62),
-                SPOOFER_VERSION(@"v19.25.3", 63),
-                SPOOFER_VERSION(@"v19.24.3", 64),
-                SPOOFER_VERSION(@"v19.24.2", 65),
-                SPOOFER_VERSION(@"v19.23.3", 66),
-                SPOOFER_VERSION(@"v19.22.6", 67),
-                SPOOFER_VERSION(@"v19.22.3", 68),
-                SPOOFER_VERSION(@"v19.21.3", 69),
-                SPOOFER_VERSION(@"v19.21.2", 70),
-                SPOOFER_VERSION(@"v19.20.2", 71),
-                SPOOFER_VERSION(@"v19.19.7", 72),
-                SPOOFER_VERSION(@"v19.19.5", 73),
-                SPOOFER_VERSION(@"v19.18.2", 74),
-                SPOOFER_VERSION(@"v19.17.2", 75),
-                SPOOFER_VERSION(@"v19.16.3", 76),
-                SPOOFER_VERSION(@"v19.15.1", 77),
-                SPOOFER_VERSION(@"v19.14.3", 78),
-                SPOOFER_VERSION(@"v19.14.2", 79),
-                SPOOFER_VERSION(@"v19.13.1", 80),
-                SPOOFER_VERSION(@"v19.12.3", 81),
-                SPOOFER_VERSION(@"v19.10.7", 82),
-                SPOOFER_VERSION(@"v19.10.6", 83),
-                SPOOFER_VERSION(@"v19.10.5", 84),
-                SPOOFER_VERSION(@"v19.09.4", 85),
-                SPOOFER_VERSION(@"v19.09.3", 86),
-                SPOOFER_VERSION(@"v19.08.2", 87),
-                SPOOFER_VERSION(@"v19.07.5", 88),
-                SPOOFER_VERSION(@"v19.07.4", 89),
-                SPOOFER_VERSION(@"v19.06.2", 90),
-                SPOOFER_VERSION(@"v19.05.5", 91),
-                SPOOFER_VERSION(@"v19.05.3", 92),
-                SPOOFER_VERSION(@"v19.04.3", 93),
-                SPOOFER_VERSION(@"v19.03.2", 94),
-                SPOOFER_VERSION(@"v19.02.1", 95),
-                SPOOFER_VERSION(@"v19.01.1", 96)
+                SPOOFER_VERSION(@"v21.08.3", 0),
+                SPOOFER_VERSION(@"v21.07.4", 1),
+                SPOOFER_VERSION(@"v21.06.2", 2),
+                SPOOFER_VERSION(@"v21.05.3", 3),
+                SPOOFER_VERSION(@"v21.04.2", 4),
+                SPOOFER_VERSION(@"v21.03.2", 5),
+                SPOOFER_VERSION(@"v21.02.3", 6),
+                SPOOFER_VERSION(@"v20.50.10", 7),
+                SPOOFER_VERSION(@"v20.50.9", 8),
+                SPOOFER_VERSION(@"v20.50.6", 9),
+                SPOOFER_VERSION(@"v20.49.5", 10),
+                SPOOFER_VERSION(@"v20.47.3", 11),
+                SPOOFER_VERSION(@"v20.46.3", 12),
+                SPOOFER_VERSION(@"v20.46.2", 13),
+                SPOOFER_VERSION(@"v20.45.3", 14),
+                SPOOFER_VERSION(@"v20.44.2", 15),
+                SPOOFER_VERSION(@"v20.43.3", 16),
+                SPOOFER_VERSION(@"v20.42.3", 17),
+                SPOOFER_VERSION(@"v20.41.5", 18),
+                SPOOFER_VERSION(@"v20.41.4", 19),
+                SPOOFER_VERSION(@"v20.40.4", 20),
+                SPOOFER_VERSION(@"v20.39.6", 21),
+                SPOOFER_VERSION(@"v20.39.5", 22),
+                SPOOFER_VERSION(@"v20.39.4", 23),
+                SPOOFER_VERSION(@"v20.38.4", 24),
+                SPOOFER_VERSION(@"v20.38.3", 25),
+                SPOOFER_VERSION(@"v20.37.5", 26),
+                SPOOFER_VERSION(@"v20.37.3", 27),
+                SPOOFER_VERSION(@"v20.36.3", 28),
+                SPOOFER_VERSION(@"v20.35.2", 29),
+                SPOOFER_VERSION(@"v20.34.2", 30),
+                SPOOFER_VERSION(@"v20.33.2", 31),
+                SPOOFER_VERSION(@"v20.32.5", 32),
+                SPOOFER_VERSION(@"v20.32.4", 33),
+                SPOOFER_VERSION(@"v20.31.6", 34),
+                SPOOFER_VERSION(@"v20.31.5", 35),
+                SPOOFER_VERSION(@"v20.30.5", 36),
+                SPOOFER_VERSION(@"v20.29.3", 37),
+                SPOOFER_VERSION(@"v20.28.2", 38),
+                SPOOFER_VERSION(@"v20.26.7", 39),
+                SPOOFER_VERSION(@"v20.25.4", 40),
+                SPOOFER_VERSION(@"v20.24.5", 41),
+                SPOOFER_VERSION(@"v20.24.4", 42),
+                SPOOFER_VERSION(@"v20.23.3", 43),
+                SPOOFER_VERSION(@"v20.22.1", 44),
+                SPOOFER_VERSION(@"v20.21.6", 45),
+                SPOOFER_VERSION(@"v20.20.7", 46),
+                SPOOFER_VERSION(@"v20.20.5", 47),
+                SPOOFER_VERSION(@"v20.19.3", 48),
+                SPOOFER_VERSION(@"v20.19.2", 49),
+                SPOOFER_VERSION(@"v20.18.5", 50),
+                SPOOFER_VERSION(@"v20.18.4", 51),
+                SPOOFER_VERSION(@"v20.16.7", 52),
+                SPOOFER_VERSION(@"v20.15.1", 53),
+                SPOOFER_VERSION(@"v20.14.2", 54),
+                SPOOFER_VERSION(@"v20.13.5", 55),
+                SPOOFER_VERSION(@"v20.12.4", 56),
+                SPOOFER_VERSION(@"v20.11.6", 57),
+                SPOOFER_VERSION(@"v20.10.4", 58),
+                SPOOFER_VERSION(@"v20.10.3", 59),
+                SPOOFER_VERSION(@"v20.09.3", 60),
+                SPOOFER_VERSION(@"v20.08.3", 61),
+                SPOOFER_VERSION(@"v20.07.6", 62),
+                SPOOFER_VERSION(@"v20.06.03", 63),
+                SPOOFER_VERSION(@"v20.05.4", 64),
+                SPOOFER_VERSION(@"v20.03.1", 65),
+                SPOOFER_VERSION(@"v20.03.02", 66),
+                SPOOFER_VERSION(@"v20.02.3", 67),
+                SPOOFER_VERSION(@"v19.49.7", 68),
+                SPOOFER_VERSION(@"v19.49.5", 69),
+                SPOOFER_VERSION(@"v19.49.3", 70),
+                SPOOFER_VERSION(@"v19.47.7", 71),
+                SPOOFER_VERSION(@"v19.46.3", 72),
+                SPOOFER_VERSION(@"v19.45.4", 73),
+                SPOOFER_VERSION(@"v19.44.4", 74),
+                SPOOFER_VERSION(@"v19.43.2", 75),
+                SPOOFER_VERSION(@"v19.42.1", 76),
+                SPOOFER_VERSION(@"v19.41.3", 77),
+                SPOOFER_VERSION(@"v19.40.4", 78),
+                SPOOFER_VERSION(@"v19.39.1", 79),
+                SPOOFER_VERSION(@"v19.38.2", 80),
+                SPOOFER_VERSION(@"v19.37.2", 81),
+                SPOOFER_VERSION(@"v19.36.1", 82),
+                SPOOFER_VERSION(@"v19.35.3", 83),
+                SPOOFER_VERSION(@"v19.34.2", 84),
+                SPOOFER_VERSION(@"v19.33.2", 85),
+                SPOOFER_VERSION(@"v19.32.8", 86),
+                SPOOFER_VERSION(@"v19.32.6", 87),
+                SPOOFER_VERSION(@"v19.31.4", 88),
+                SPOOFER_VERSION(@"v19.30.2", 89),
+                SPOOFER_VERSION(@"v19.29.1", 90),
+                SPOOFER_VERSION(@"v19.28.1", 91),
+                SPOOFER_VERSION(@"v19.26.5", 92),
+                SPOOFER_VERSION(@"v19.25.4", 93),
+                SPOOFER_VERSION(@"v19.25.3", 94),
+                SPOOFER_VERSION(@"v19.24.3", 95),
+                SPOOFER_VERSION(@"v19.24.2", 96),
+                SPOOFER_VERSION(@"v19.23.3", 97),
+                SPOOFER_VERSION(@"v19.22.6", 98),
+                SPOOFER_VERSION(@"v19.22.3", 99),
+                SPOOFER_VERSION(@"v19.21.3", 100),
+                SPOOFER_VERSION(@"v19.21.2", 101),
+                SPOOFER_VERSION(@"v19.20.2 (Deprecated)", 102),
+                SPOOFER_VERSION(@"v19.19.7 (Deprecated)", 103),
+                SPOOFER_VERSION(@"v19.19.5 (Deprecated)", 104),
+                SPOOFER_VERSION(@"v19.18.2 (Deprecated)", 105),
+                SPOOFER_VERSION(@"v19.17.2 (Deprecated)", 106),
+                SPOOFER_VERSION(@"v19.16.3 (Deprecated)", 107),
+                SPOOFER_VERSION(@"v19.15.1 (Deprecated)", 108),
+                SPOOFER_VERSION(@"v19.14.3 (Deprecated)", 109),
+                SPOOFER_VERSION(@"v19.14.2 (Deprecated)", 110),
+                SPOOFER_VERSION(@"v19.13.1 (Deprecated)", 111),
+                SPOOFER_VERSION(@"v19.12.3 (Deprecated)", 112),
+                SPOOFER_VERSION(@"v19.10.7 (Deprecated)", 113),
+                SPOOFER_VERSION(@"v19.10.6 (Deprecated)", 114),
+                SPOOFER_VERSION(@"v19.10.5 (Deprecated)", 115),
+                SPOOFER_VERSION(@"v19.09.4 (Deprecated)", 116),
+                SPOOFER_VERSION(@"v19.09.3 (Deprecated)", 117),
+                SPOOFER_VERSION(@"v19.08.2 (Deprecated)", 118),
+                SPOOFER_VERSION(@"v19.07.5 (Deprecated)", 119),
+                SPOOFER_VERSION(@"v19.07.4 (Deprecated)", 120),
+                SPOOFER_VERSION(@"v19.06.2 (Deprecated)", 121),
+                SPOOFER_VERSION(@"v19.05.5 (Deprecated)", 122),
+                SPOOFER_VERSION(@"v19.05.3 (Deprecated)", 123),
+                SPOOFER_VERSION(@"v19.04.3 (Deprecated)", 124),
+                SPOOFER_VERSION(@"v19.03.2 (Deprecated)", 125),
+                SPOOFER_VERSION(@"v19.02.1 (Deprecated)", 126),
+                SPOOFER_VERSION(@"v19.01.1 (Deprecated)", 127)
             ];
             YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"VERSION_SPOOFER_SELECTOR") pickerSectionTitle:nil rows:rows selectedItemIndex:appVersionSpoofer() parentResponder:[self parentResponder]];
             [settingsViewController pushViewController:picker];
@@ -1029,35 +1004,42 @@ NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
         detailTextBlock:^NSString *() {
             switch (getNotificationIconStyle()) {
                 case 1:
-                    return @"Thin Outline (2020+)";
+                    return @"Bold Outline (2024+)";
                 case 2:
-                    return @"Filled (2018+)";
+                    return @"Thin Outline (2020+)";
                 case 3:
+                    return @"Filled (2018+)";
+                case 4:
                     return @"Classic/Inbox (2014+)";
                 case 0:
                 default:
-                    return @"Default";
+                    return @"Default (2025+)";
             }
         }
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             NSArray <YTSettingsSectionItem *> *rows = @[
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Default" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Default (2025+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"notificationIconStyle"];
                     [settingsViewController reloadData];
                     return YES;
                 }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Thin Outline (2020+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Bold Outline (2024+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"notificationIconStyle"];
                     [settingsViewController reloadData];
                     return YES;
                 }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Filled (2018+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Thin Outline (2020+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"notificationIconStyle"];
                     [settingsViewController reloadData];
                     return YES;
                 }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Classic/Inbox (2014+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Filled (2018+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"notificationIconStyle"];
+                    [settingsViewController reloadData];
+                    return YES;
+                }],
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:@"Classic/Inbox (2014+)" titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                    [[NSUserDefaults standardUserDefaults] setInteger:4 forKey:@"notificationIconStyle"];
                     [settingsViewController reloadData];
                     return YES;
                 }]
